@@ -87,6 +87,7 @@ async function predict() {
         time.style.display = 'none';
         lscore.style.display = 'none';
         lletra.style.display = 'none';
+        labelContainer.style.display = 'none';
 
         divTela.innerHTML = `O seu tempo acabou,<br><br>O seu score é de: <b>${score}</b> pontos!`;
 
@@ -112,33 +113,33 @@ async function predict() {
 function btnFacil() {
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
-    var btnSeta = document.getElementById('btnSeta');
+    /*var btnSeta = document.getElementById('btnSeta');*/
     tempo = 20;
     choose_game.style.display = "none";
     game_play.style.display = "block";
-    btnSeta.style.display = "block";
+    /*btnSeta.style.display = "block";*/
 
     init();
 }
 function btnMedio() {
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
-    var btnSeta = document.getElementById('btnSeta');
+    /* var btnSeta = document.getElementById('btnSeta');*/
     tempo = 10;
     choose_game.style.display = "none";
     game_play.style.display = "block";
-    btnSeta.style.display = "block";
+    /* btnSeta.style.display = "block";*/
 
     init();
 }
 function bntDificil() {
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
-    var btnSeta = document.getElementById('btnSeta');
+    /* var btnSeta = document.getElementById('btnSeta');*/
     tempo = 5;
     choose_game.style.display = "none";
     game_play.style.display = "block";
-    btnSeta.style.display = "block";
+    /*btnSeta.style.display = "block";*/
 
     init();
 }
