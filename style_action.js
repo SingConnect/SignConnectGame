@@ -11,49 +11,28 @@ var game_play = document.getElementById('game_play');
 
 
 
-/* evento de clique ao botão home / as divs com os seguintes ids home e home estão recebendo
-novos estilos */
-btnHome.addEventListener('click', function () {
-
-    /* ------------GAME------------*/
-    game.style.display = 'none';
-
-    /* ------------home------------*/
-    home.style.display = 'block';
-    home.style.display = 'flex';
-    home.style.alignItems = 'center';
-    home.style.flexDirection = 'column';
-
-    /*-------Recarrega página--------*/
-    location.reload();
-
-    /* os estilos display: flex; , align-items: center; , 
-    flex-direction: column; estão sendo colocados no arquivo js, 
-    pos ao serem colocados no arquivo css apresentaram erro e não são 
-    executados como deveriam */
-});
-
-
 /* evento de clique ao botão seta / a div com os seguinte id home choose_game, esta recebendo
 novos estilos */
 
-btnSeta.addEventListener('click', function () {
+//btnSeta.addEventListener('click', function () {
 
-    /*------------CHOOSE GAME------------*/
-    choose_game.style.display = 'block';
-    choose_game.style.display = 'flex';
-    choose_game.style.alignItems = 'center';
-    choose_game.style.flexDirection = 'column';
+/*------------CHOOSE GAME------------*/
+//choose_game.style.display = 'block';
+//choose_game.style.display = 'flex';
+//choose_game.style.alignItems = 'center';
+//choose_game.style.flexDirection = 'column';
 
-    btnSeta.style.display = "none";
+//btnSeta.style.display = "none";
 
-    game_play.style.display = 'none';
+//game_play.style.display = 'none';
 
-    /*os estilos display: flex; , align-items: center; , 
-    flex-direction: column; estão sendo colocados no arquivo js, 
-    pos ao serem colocados no arquivo css apresentaram erro e não são 
-    executados como deveriam */
-});
+/*os estilos display: flex; , align-items: center; , 
+flex-direction: column; estão sendo colocados no arquivo js, 
+pos ao serem colocados no arquivo css apresentaram erro e não são 
+executados como deveriam */
+
+
+//});
 
 
 /* evento de clique ao botão home / as divs com os seguintes ids home, game e choose_game estão recebendo
@@ -76,6 +55,9 @@ btnHome.addEventListener('click', function () {
     flex-direction: column; estão sendo colocados no arquivo js, 
     pos ao serem colocados no arquivo css apresentaram erro e não são 
     executados como deveriam */
+
+    /*-------Recarrega página--------*/
+    location.reload();
 });
 
 
