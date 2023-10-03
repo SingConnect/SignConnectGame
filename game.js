@@ -6,7 +6,7 @@ var model, webcam, labelContainer, maxPredictions,
     labelScore = document.getElementById("score"),
     labelLetra = document.getElementById("letra"),
     labelTempo = document.getElementById("time"),
-    divTela = document.getElementById("tela_fim");
+    divTela = document.getElementById("tela_fim2");
 
 async function init() {
     const modelURL = URL + "model.json";
@@ -33,7 +33,7 @@ async function init() {
     webcam = new tmImage.Webcam(150, 150, flip); /* width, height, flip / largura, altura, virar */
     await webcam.setup(); /* request access to the webcam / solicitar acesso à webcam */
     await webcam.play();
-    window.requestAnimationFrame(loop);
+    loop();
 
     /* append elements to the DOM / anexar elementos ao DOM */
     document.getElementById("webcam-container").appendChild(webcam.canvas);
@@ -80,16 +80,15 @@ async function predict() {
 
         var preview = document.getElementById("preview");
         var time = document.getElementById("time");
-        /*var score = document.getElementById("score");*/
-        var letra = document.getElementById("letra");
+        var lscore = document.getElementById("score");
+        var lletra = document.getElementById("letra");
 
         preview.style.display = 'none';
         time.style.display = 'none';
-        /*score.style.display = 'none';*/
-        letra.style.display = 'none';
+        lscore.style.display = 'none';
+        lletra.style.display = 'none';
 
         divTela.innerHTML = `O seu tempo acabou,<br><br>O seu score é de: <b>${score}</b> pontos!`;
-
 
     }
 
@@ -114,7 +113,7 @@ function btnFacil() {
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
     var btnSeta = document.getElementById('btnSeta');
-    tempo = 2000;
+    tempo = 20;
     choose_game.style.display = "none";
     game_play.style.display = "block";
     btnSeta.style.display = "block";

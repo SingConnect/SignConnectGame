@@ -24,6 +24,9 @@ btnHome.addEventListener('click', function () {
     home.style.alignItems = 'center';
     home.style.flexDirection = 'column';
 
+    /*-------Recarrega página--------*/
+    location.reload();
+
     /* os estilos display: flex; , align-items: center; , 
     flex-direction: column; estão sendo colocados no arquivo js, 
     pos ao serem colocados no arquivo css apresentaram erro e não são 
