@@ -1,6 +1,5 @@
-//const URL = "https://teachablemachine.withgoogle.com/models/Vn-uJTd4S/";
 const URL1 = "https://teachablemachine.withgoogle.com/models/yHZpVcXLD/"; // a, c, e, m, n, o ,s, x.
-const URL2 = "https://teachablemachine.withgoogle.com/models/5vPkHjD0V/"; // d, g, i, l, j, q, p.
+const URL2 = "https://teachablemachine.withgoogle.com/models/ClpaUFbvE/"; // d, g, i, l, j, q, p.
 const URL3 = "https://teachablemachine.withgoogle.com/models/iieVIMLzz/"; // b, f, r, t, u, v, w, y.
 
 var model1, model2, model3, webcam, labelContainer, maxPredictions, RAFloop,
