@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    /*background-color: black;*/
+    background-image: url(img/futurista_retrô_background.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ------------CONTAINER------------*/
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+
+
+
+/* ------------login_cadastro------------*/
+
+#login_cadastro {
+    width: 150vh;
+    height: 80vh;
+    background-color: #ff6452;
+    border: 5px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 13px black;
+    margin-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+
+
+/* ------------CADASTRO------------*/
+
+#cadastro {
+    width: 100%;
+    height: 100%;
+    border-right: 4px solid rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img_cadastro {
+    width: 50vh;
+    height: 10vh;
+    position: relative;
+    margin-top: 2vh;
+}
+
+.img_cadastro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* ------------LOGIN------------*/
+
+#login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.img_login {
+    width: 28vh;
+    height: 10vh;
+    position: relative;
+    margin-top: 2vh;
+}
+
+.img_login img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#login form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#login form input {
+    width: 50vh;
+    height: 8vh;
+    background-color: rgb(248, 248, 146);
+    border: 3px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 6px black;
+
+    margin-top: 5vh;
+
+
+
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    color: #000000;
+    text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+#seta_login {
+    display: none;
+}
+
+#login form label img {
+    width: 15vh;
+    height: 10vh;
+    object-fit: cover;
+    margin-top: 10vh;
+
+}
+
+
+
+/* ------------CADASTRO------------*/
+
+
+#cadastro form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#cadastro form input {
+    width: 50vh;
+    height: 8vh;
+    background-color: rgb(248, 248, 146);
+    border: 3px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 6px black;
+
+    margin-top: 5vh;
+
+
+
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    color: #000000;
+    text-shadow: -1px 1px 0px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+}
+
+#cadastro {
+    overflow: auto;
+}
+
+#bt_cadastro {
+    display: none;
+}
+
+
+
+#cadastro form label img {
+    height: 10vh;
+    object-fit: cover;
+    margin-top: 7vh;
+
+}
+
+/* ------------BARRA DE ROLAGEM CADASTRO------------*/
+
+#cadastro::-webkit-scrollbar {
+    width: 12px;
+    /* Largura da barra de rolagem vertical */
+    height: 12px;
+    /* Altura da barra de rolagem horizontal */
+}
+
+#cadastro::-webkit-scrollbar-track {
+    background-color: rgb(248, 248, 146);
+    /* Cor da faixa da barra de rolagem */
+}
+
+/* Para navegadores compatíveis com a especificação CSS Scrollbars Level 1 (como Firefox) */
+#cadastro {
+    scrollbar-width: thin;
+    /* Define a largura da barra de rolagem */
+}
+
+#cadastro::-webkit-scrollbar-thumb {
+    background: #ff0000;
+    /* Cor da alça da barra de rolagem */
+    border-radius: 6px;
+    /* Raio da alça da barra de rolagem */
+}
