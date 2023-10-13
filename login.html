@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignConnect Gamet</title>
+</head>
+
+<body onload="loadModel()">
+
+
+
+    <div class="container">
+
+        <div id="login_cadastro">
+
+            <div id="cadastro">
+
+                <div class="img_cadastro">
+                    <img src="img/cadastro_c.png">
+                </div>
+
+                <form action="/registrar" method="post">
+
+
+                    <input type="text" id="name" name="name" placeholder="Nome" required>
+
+                    <input type="text" id="lastname" name="lastname" placeholder="Sobrenome" required>
+
+                    <input type="text" id="nickname" name="nickname" placeholder="Nome de Usuário" required>
+
+                    <input type="email" id="email" name="email" placeholder="E-mail" required>
+
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+
+                    <input type="password" id="passwordC" name="passwordC" placeholder="Confirmar Senha" required>
+
+                    <label id="l_bt_cadastro" for="bt_cadastro"><img src="img/cadastro_b.png"></label>
+                    <input type="submit" id="bt_cadastro" value="Registrar">
+                    <br><br>
+                </form>
+
+
+            </div>
+
+            <div id="login">
+
+                <div class="img_login">
+                    <img src="img/login_l.png">
+                </div>
+
+                <form action="/login" method="post">
+                    <input type="text" id="nicknameOrEmail" name="username" placeholder="Nome de Usuário ou E-mail"
+                        required>
+                    <input type="password" id="password" name="password" placeholder="Senha" required>
+
+                    <label for="seta_login"><img src="img/seta_login.png"></label>
+                    <input type="submit" id="seta_login">
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="style_login_cadastro.css">
+</body>
+
+</html>
