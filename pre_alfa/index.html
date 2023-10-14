@@ -9,7 +9,8 @@
 
 <body onload="loadModel()">
 
-
+    <p id="modelCarregando">ESPERE! Carregando Inteligencia Artificial</p>
+    <p id="modelCarregada">Inteligencia Artificial Carregada!</p>
 
     <div class="container">
 
@@ -65,10 +66,13 @@
                 </div>
 
                 <div id="tela">
+                    <table>
+                        <tr>
+                            <td><label id="time"></label></td>
+                            <td><label id="score"></label></td>
+                        </tr>
+                    </table>
 
-                    <label id="time"></label><br>
-
-                    <label id="score"></label><br>
 
                     <label id="letra"></label><br>
 
@@ -83,10 +87,6 @@
         </div>
 
     </div>
-
-
-
-
 
 
     <link rel="stylesheet" type="text/css" href="style.css">
