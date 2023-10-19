@@ -89,7 +89,4 @@ btnStart.addEventListener('click', function () {
     navbar.style.display = 'block';
     navbar.style.display = 'flex';
     navbar.style.flexDirection = 'row';
-
-    document.getElementById("modelCarregando").style.display = "none";
-    document.getElementById("modelCarregada").style.display = "none";
 });

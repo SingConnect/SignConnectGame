@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    /*background-color: black;*/
+    background-image: url(img/futurista_retrô_background.png);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ------------CONTAINER------------*/
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+/* ------------NAVBAR------------*/
+
+#navbar {
+    width: 100%;
+    height: 10vh;
+    /*display: none;*/
+    display: flex;
+    /*background-color: #ff6452;*/
+    position: relative;
+
+
+}
+
+.buttonHome {
+    width: 25vh;
+    height: 20vh;
+    margin: 3vh;
+}
+
+.buttonHome #btnHome {
+    width: 20vh;
+    height: 15vh;
+    background-color: transparent;
+    background-image: url('img/home.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+}
+
+.buttonSeta {
+    width: 25vh;
+    height: 20vh;
+    margin-top: 4vh;
+
+}
+
+.buttonSeta #btnSeta {
+    width: 12vh;
+    height: 12vh;
+    background-color: transparent;
+    background-image: url('img/seta.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: none;
+
+
+
+
+}
+
+
+.buttonDropdown {
+    width: 14vh;
+    height: 14vh;
+    margin: 4vh;
+    position: absolute;
+    right: 0;
+
+
+
+
+}
+
+#dropbtn {
+    width: 8.88vh;
+    height: 8vh;
+    background-color: transparent;
+    background-image: url('img/dropdown.png');
+
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+#dropbtnX {
+    width: 8.88vh;
+    height: 8vh;
+    background-color: transparent;
+    background-image: url('img/icon_x_roxo.png');
+
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: none;
+
+}
+
+#dropdown_content {
+
+    width: 29vh;
+    height: 30vh;
+    background-color: #ff6452;
+    border: 5px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 13px black;
+
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    display: none;
+    margin-left: -300%;
+    padding-top: 1.5vh;
+
+
+
+
+
+
+}
+
+#userbtnD {
+    width: 27vh;
+    height: 8vh;
+    background-color: transparent;
+    background-image: url('img/user.png');
+
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+#rankingbtnD {
+    width: 27vh;
+    height: 8vh;
+    background-color: transparent;
+    background-image: url('img/ranking.png');
+
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+#logoutbtnD {
+    width: 27vh;
+    height: 8vh;
+    background-color: transparent;
+    background-image: url('img/logout.png');
+
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+
+
+
+/* ------------BACKGROUND GAME------------*/
+
+#game {
+    width: 50vh;
+    height: 80vh;
+    background-color: #ff6452;
+    border: 5px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 13px black;
+    /*display: none;*/
+
+
+}
+
+
+/* ------------CHOOSE GAME------------*/
+
+#choose_game {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(248, 248, 146);
+    padding-top: 12vh;
+    /*display: none;*/
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#choose_game label {
+    cursor: pointer;
+}
+
+#choose_game label img {
+    width: 40vh;
+}
+
+#choose_game input[type="submit"] {
+    display: none;
+}
+
+
+/* ------------GAME PLAY------------*/
+
+#game_play {
+    display: none;
+}
+
+.preview {
+    width: 100%;
+    margin-top: 5vh;
+    display: grid;
+    place-items: center;
+
+}
+
+#webcam-container canvas {
+    border-radius: 20px;
+    background-color: #ff6452;
+    border: 5px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 13px black;
+
+}
+
+.info {
+    width: 20vh;
+    height: 45vh;
+    background-color: #ffffffad;
+    padding: 20px;
+    display: none;
+}
+
+#tela {
+    width: 100%;
+    margin-top: 6vh;
+    /*background-color: blue;*/
+    display: flex;
+    align-items: start;
+    padding-left: 10vh;
+    padding-right: 5vh;
+    flex-direction: column;
+
+}
+
+#tela label {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    margin-bottom: 1vh;
+
+    color: #ffee00;
+    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+
+}
