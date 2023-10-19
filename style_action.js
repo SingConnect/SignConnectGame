@@ -11,6 +11,26 @@ var game_play = document.getElementById('game_play');
 
 
 
+
+
+
+var dropbtn = document.getElementById('dropbtn');
+var dropbtnX = document.getElementById('dropbtnX');
+var dropdown_content = document.getElementById('dropdown_content');
+
+dropbtn.addEventListener('click', function () {
+    dropbtn.style.display = 'none';
+    dropbtnX.style.display = 'block';
+    dropdown_content.style.display = 'block';
+});
+
+dropbtnX.addEventListener('click', function () {
+    dropbtn.style.display = 'block';
+    dropbtnX.style.display = 'none';
+    dropdown_content.style.display = 'none';
+});
+
+
 /* evento de clique ao botão seta / a div com os seguinte id home choose_game, esta recebendo
 novos estilos */
 
@@ -90,3 +110,7 @@ btnStart.addEventListener('click', function () {
     navbar.style.display = 'flex';
     navbar.style.flexDirection = 'row';
 });
+
+
+
+

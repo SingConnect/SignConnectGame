@@ -187,9 +187,10 @@ body {
     /*background-color: blue;*/
     display: flex;
     align-items: start;
-    padding-left: 5vh;
+    padding-left: 10vh;
     padding-right: 5vh;
     flex-direction: column;
+
 }
 
 #tela label {
@@ -201,37 +202,4 @@ body {
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     font-size: 20px;
 
-}
-
-#tela_fim2 {
-    text-align: center;
-    padding-left: 8px;
-}
-
-#tela_fim2>.p1{
-    color: red;
-    background-color: black;
-    border-radius: 10px;
-    font-weight: 10px;
-    padding: 5px;
-}
-
-td {
-    text-align: center;
-    padding: 20px;
-}
-
-#modelCarregando, #modelCarregada {
-    position: absolute;
-    font-weight: bolder;
-    background-color: black;
-    border-radius: 2px;
-    padding: 2px;
-}
-#modelCarregando {
-    color: red;
-}
-#modelCarregada {
-    color: green;
-    display: none;
 }
