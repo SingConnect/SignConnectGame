@@ -8,13 +8,13 @@ const URL6 = "https://teachablemachine.withgoogle.com/models/VVGtsI2Rj/"; //[b, 
 var model1, model2, model3, model4, model5, model6, webcam, labelContainer, RAFloop, RAFVM,
     letras1 = ['a', 'e', 'o' ,'s'], letras2 = ['c', 'm', 'n', 'x'], letras3 = ['d', 'g', 'i', 'l'], letras4 = ['j', 'q', 'p', 'k', 'h'], letras5 = ['f', 't', 'w', 'y'], letras6 = ['b', 'r', 'v', 'u'],
     letras = ['a', 'c', 'e', 'm', 'n', 'o', 's' , 'x', 'd', 'g', 'i', 'l', 'j', 'q', 'p', 'b', 'f', 'r', 't', 'u', 'v', 'w', 'y', 'k', 'h'],
-    letra = letras[Math.floor(Math.random() * letras.length)], score = 0, escolher = false, tempo,
+    letra = letras[Math.floor(Math.random() * letras.length)], score = 0, tempo,
+    palavra = score <= 20 ? pMenor[Math.floor(Math.random() * pMenor.length)] : pMair[Math.floor(Math.random() * pMair.length)], resPalavra = "", indexPalavra = 0,
     labelScore = document.getElementById("score"),
     labelLetra = document.getElementById("letra"),
     labelTempo = document.getElementById("time"),
     divTela = document.getElementById("tela_fim2"),
-    facilBool = false, medioBool = false, dificilBool = false,
-    facilTaxa = 0.25, medioTaxa = 0.5, dificilTaxa = 1;
+    facilBool = false, medioBool = false, dificilBool = false, taxa = 1;
 
 async function loadModel() {
      /* load the model and metadata 
@@ -40,8 +40,8 @@ async function loadModel() {
 
 function verificaModel() {
     if (model1 != undefined && model2 != undefined && model3 != undefined && model4 != undefined && model5 != undefined && model6 != undefined) {
-        document.getElementById("modelCarregando").style.display = "none";
-        document.getElementById("modelCarregada").style.display = "block";
+        document.getElementById("preLoader").style.display = "none";
+        document.getElementById("choose_game").style.display = "block";
         window.cancelAnimationFrame(RAFVM);
     }
 }
@@ -76,27 +76,39 @@ async function predict() {
     / prever pode incluir um elemento HTML de imagem, vídeo ou tela */
     
     let prediction;
-    if (letras1.includes(letra)) {
-        prediction = await model1.predict(webcam.canvas);
-    } else if (letras2.includes(letra)) {
-        prediction = await model2.predict(webcam.canvas);
-    } else if (letras3.includes(letra)) {
-        prediction = await model3.predict(webcam.canvas);
-    } else if (letras4.includes(letra)) {
-        prediction = await model4.predict(webcam.canvas);
-    } else if (letras5.includes(letra)) {
-        prediction = await model5.predict(webcam.canvas);
-    } else if (letras6.includes(letra)) {
-        prediction = await model6.predict(webcam.canvas);
+    if (score <= 5) {
+        if (letras1.includes(letra)) {
+            prediction = await model1.predict(webcam.canvas);
+        } else if (letras2.includes(letra)) {
+            prediction = await model2.predict(webcam.canvas);
+        } else if (letras3.includes(letra)) {
+            prediction = await model3.predict(webcam.canvas);
+        } else if (letras4.includes(letra)) {
+            prediction = await model4.predict(webcam.canvas);
+        } else if (letras5.includes(letra)) {
+            prediction = await model5.predict(webcam.canvas);
+        } else if (letras6.includes(letra)) {
+            prediction = await model6.predict(webcam.canvas);
+        }
+    } else {
+        if (letras1.includes(palavra[indexPalavra])) {
+            prediction = await model1.predict(webcam.canvas);
+        } else if (letras2.includes(palavra[indexPalavra])) {
+            prediction = await model2.predict(webcam.canvas);
+        } else if (letras3.includes(palavra[indexPalavra])) {
+            prediction = await model3.predict(webcam.canvas);
+        } else if (letras4.includes(palavra[indexPalavra])) {
+            prediction = await model4.predict(webcam.canvas);
+        } else if (letras5.includes(palavra[indexPalavra])) {
+            prediction = await model5.predict(webcam.canvas);
+        } else if (letras6.includes(palavra[indexPalavra])) {
+            prediction = await model6.predict(webcam.canvas);
+        }
     }
 
     labelScore.innerHTML = `Score: <b>${score}</b>`;
     labelTempo.innerHTML = `Time: <b>${tempo.toFixed(0)}</b>`;
     tempo -= 0.02;
-    if (escolher) {
-        letra = letras[Math.floor(Math.random() * letras.length)]
-        labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>, em libras.`;
-        }
         
     if (tempo <= 0) {
         var preview = document.getElementById("preview");
@@ -111,31 +123,67 @@ async function predict() {
 
         finalize();
     }
-        
-    prediction.map(el => {
-        if (el.probability >= 0.9) {
-            if (el.className !== "nada") {
-                labelContainer.innerHTML = `Você fez a letra: <b>${el.className}</b>!`;
-                escolher = false;
-                if (el.className === letra) {
-                    escolher = true;
-                    score++;
-                    if (tempo <= 5) {
-                        if (facilBool) {
-                            tempo += facilTaxa;
-                        } else if (medioBool) {
-                            tempo += medioTaxa;
-                        } else if (dificilBool) {
-                            tempo += dificilTaxa;
+    
+    if (score <= 5) {
+        labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>, em libras.`;
+        prediction.map(el => {
+            if (el.probability >= 0.9) {
+                if (el.className !== "nada") {
+                    labelContainer.innerHTML = `Tentativa: <b>${el.className}</b>!`;
+                    if (el.className === letra) {
+                        letra = letras[Math.floor(Math.random() * letras.length)];
+                        score++;
+                        if (tempo <= 5) {
+                            if (facilBool) {
+                                tempo += taxa;
+                            } else if (medioBool) {
+                                tempo += taxa;
+                            } else if (dificilBool) {
+                                tempo += taxa;
+                            }
                         }
                     }
+                } else {
+                    labelContainer.innerHTML = "";
+                };
+            }
+        });
+    } else {
+        labelLetra.innerHTML = `Assoletre a palavra: <b>${palavra}</b>, em libras.`;
+        prediction.map(el => {
+            if (el.probability >= 0.9) {
+                if (el.className !== "nada") {
+                    labelContainer.innerHTML = `Tentativa: <b>${resPalavra + el.className}</b>!`;
+                    if (palavra[indexPalavra] === el.className) {
+                        resPalavra += el.className;
+                        indexPalavra++;
+                        if (tempo <= 5) {
+                            if (facilBool) {
+                                tempo += taxa;
+                            } else if (medioBool) {
+                                tempo += taxa;
+                            } else if (dificilBool) {
+                                tempo += taxa;
+                            }
+                        }
+                    }
+                    if (resPalavra === palavra) {
+                        score++;
+                        labelContainer.innerHTML = `Tentativa: <b>${resPalavra + el.className}</b>!`;
+                        resPalavra = "";
+                        indexPalavra = 0;
+                        palavra = score <= 20 ? pMenor[Math.floor(Math.random() * pMenor.length)] : pMair[Math.floor(Math.random() * pMair.length)];
+                    }
+                } else {
+                    if (resPalavra !== "") {
+                        labelContainer.innerHTML = `Tentativa: <b>${resPalavra}</b>!`;
+                    } else {
+                        labelContainer.innerHTML = "";
+                    }
                 }
-            } else {
-                labelContainer.innerHTML = "";
-                escolher = false;
-            };
-        }
-    });
+            }
+        });
+    }
 }
 
 function finalize() {

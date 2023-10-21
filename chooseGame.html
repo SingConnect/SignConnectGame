@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignConnect Gamet</title>
+    <title>SignConnect Game</title>
 </head>
 
 <body onload="loadModel()">
@@ -39,6 +39,7 @@
 
         <div id="game">
 
+            <div id="preLoader"><img src="img/preLoader.gif"></div>
 
             <div id="choose_game">
 
@@ -67,9 +68,13 @@
 
                 <div id="tela">
 
-                    <label id="time"></label><br>
+                    <table>
+                        <tr>
+                            <td><label id="time"></label></td>
+                            <td><label id="score"></label></td>
+                        </tr>
+                    </table>
 
-                    <label id="score"></label><br>
 
                     <label id="letra"></label><br>
 
@@ -98,8 +103,8 @@
 
     <link rel="stylesheet" type="text/css" href="styleChooseGame.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="palavras.js"></script>
     <script src="game.js"></script>
     <script src="style_action.js"></script>
 </body>
