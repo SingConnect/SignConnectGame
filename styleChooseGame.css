@@ -262,8 +262,7 @@ body {
     /*background-color: blue;*/
     display: flex;
     align-items: start;
-    padding-left: 10vh;
-    padding-right: 5vh;
+    padding: 6vh;
     flex-direction: column;
 
 }
@@ -277,6 +276,17 @@ body {
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     font-size: 20px;
 
+}
+
+.p1 {
+    background-color: black;
+    color: red;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+#tela_fim2 {
+    text-align: center;
 }
 
 td {
