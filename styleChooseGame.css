@@ -138,24 +138,6 @@ body {
     cursor: pointer;
 }
 
-
-
-#nicklabel,
-#namelabel,
-#facillabel,
-#mediolabel,
-#dificillabel {
-    font-family: 'Impact', 'fantasy';
-    color: #ffee00;
-    font-size: larger;
-    padding-left: 15px;
-    text-shadow: 1px 1px #000000;
-}
-
-#namelabel {
-    font-size: small;
-}
-
 #rankingbtnD {
     width: 27vh;
     height: 8vh;
@@ -190,7 +172,7 @@ body {
     border: 5px solid #f8e321;
     border-radius: 10px;
     box-shadow: -3px 2px 0px 13px black;
-    display: none;
+
 
     margin-top: 8vh;
     margin-left: 79vh;
@@ -202,7 +184,25 @@ body {
     flex-direction: column;
     place-items: center;
 
+    display: none;
 
+
+}
+
+#nicklabel,
+#namelabel,
+#facillabel,
+#mediolabel,
+#dificillabel {
+    font-family: 'Impact', 'fantasy';
+    color: #ffee00;
+    font-size: larger;
+    padding-left: 15px;
+    text-shadow: 1px 1px #000000;
+}
+
+#namelabel {
+    font-size: small;
 }
 
 .buttonXInfo {
@@ -247,7 +247,6 @@ body {
     border: 5px solid #f8e321;
     border-radius: 10px;
     box-shadow: -3px 2px 0px 13px black;
-    /* display: none;*/
 
     margin-top: 8vh;
     margin-left: 68vh;
