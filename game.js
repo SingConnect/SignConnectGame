@@ -58,7 +58,7 @@ async function init() {
     /* append elements to the DOM / anexar elementos ao DOM */
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     labelContainer = document.getElementById("tela_fim");
-    labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>, em libras.`;
+    labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>`;
 }
 
 async function loop() {
@@ -118,18 +118,25 @@ async function predict() {
         labelScore.style.display = 'none';
         labelLetra.style.display = 'none';
         labelContainer.style.display = 'none';
+        document.getElementById("bt_voltar").style.display = 'block';
+        document.getElementById("ponto").value = score;
+        document.getElementById("btnHome").style.display = 'none';
             
         divTela.innerHTML = `<p class="p1">O SEU TEMPO ACABOU.</p><br><br><p class="p2">Score: <b>${score}</b> pontos!</p>`;
 
-        finalize();
+        try {
+            finalize();
+        } catch (error) {
+            console.log(error);
+        }
     }
     
     if (score <= 5) {
-        labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>, em libras.`;
+        labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>`;
         prediction.map(el => {
             if (el.probability >= 0.9) {
                 if (el.className !== "nada") {
-                    labelContainer.innerHTML = `Tentativa: <b>${el.className}</b>!`;
+                    labelContainer.innerHTML = `Tentativa: <b>${el.className}</b>`;
                     if (el.className === letra) {
                         letra = letras[Math.floor(Math.random() * letras.length)];
                         score++;
@@ -149,11 +156,11 @@ async function predict() {
             }
         });
     } else {
-        labelLetra.innerHTML = `Assoletre a palavra: <b>${palavra}</b>, em libras.`;
+        labelLetra.innerHTML = `Assoletre a palavra: <b>${palavra}</b>`;
         prediction.map(el => {
             if (el.probability >= 0.9) {
                 if (el.className !== "nada") {
-                    labelContainer.innerHTML = `Tentativa: <b>${resPalavra + el.className}</b>!`;
+                    labelContainer.innerHTML = `Tentativa: <b>${resPalavra + el.className}</b>`;
                     if (palavra[indexPalavra] === el.className) {
                         resPalavra += el.className;
                         indexPalavra++;
@@ -169,14 +176,14 @@ async function predict() {
                     }
                     if (resPalavra === palavra) {
                         score++;
-                        labelContainer.innerHTML = `Tentativa: <b>${resPalavra + el.className}</b>!`;
+                        labelContainer.innerHTML = `Tentativa: <b>${resPalavra + el.className}</b>`;
                         resPalavra = "";
                         indexPalavra = 0;
                         palavra = score <= 20 ? pMenor[Math.floor(Math.random() * pMenor.length)] : pMair[Math.floor(Math.random() * pMair.length)];
                     }
                 } else {
                     if (resPalavra !== "") {
-                        labelContainer.innerHTML = `Tentativa: <b>${resPalavra}</b>!`;
+                        labelContainer.innerHTML = `Tentativa: <b>${resPalavra}</b>`;
                     } else {
                         labelContainer.innerHTML = "";
                     }
@@ -199,37 +206,40 @@ function finalize() {
 
 function btnFacil() {
     facilBool = true;
+    document.getElementById("dificuldade").value = "f";
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
-    /*var btnSeta = document.getElementById('btnSeta');*/
+    var btnSeta = document.getElementById('btnSeta');
     tempo = 30;
     choose_game.style.display = "none";
     game_play.style.display = "block";
-    /*btnSeta.style.display = "block";*/
+    btnSeta.style.display = "block";
 
     init();
 }
 function btnMedio() {
     medioBool = true;
+    document.getElementById("dificuldade").value = "m";
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
-    /* var btnSeta = document.getElementById('btnSeta');*/
+    var btnSeta = document.getElementById('btnSeta');
     tempo = 20;
     choose_game.style.display = "none";
     game_play.style.display = "block";
-    /* btnSeta.style.display = "block";*/
+    btnSeta.style.display = "block";
 
     init();
 }
 function bntDificil() {
     dificilBool = true;
+    document.getElementById("dificuldade").value = "d";
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
-    /* var btnSeta = document.getElementById('btnSeta');*/
+    var btnSeta = document.getElementById('btnSeta');
     tempo = 10;
     choose_game.style.display = "none";
     game_play.style.display = "block";
-    /*btnSeta.style.display = "block";*/
+    btnSeta.style.display = "block";
 
     init();
 }

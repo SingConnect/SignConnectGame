@@ -72,10 +72,6 @@ body {
     border: none;
     cursor: pointer;
     display: none;
-
-
-
-
 }
 
 
@@ -85,10 +81,6 @@ body {
     margin: 4vh;
     position: absolute;
     right: 0;
-
-
-
-
 }
 
 #dropbtn {
@@ -133,12 +125,6 @@ body {
     display: none;
     margin-left: -300%;
     padding-top: 1.5vh;
-
-
-
-
-
-
 }
 
 #userbtnD {
@@ -150,8 +136,21 @@ body {
     background-size: cover;
     border: none;
     cursor: pointer;
+}
 
+#useDiv {
+    display: none;
+}
 
+#nicklabel, #namelabel, #facillabel, #mediolabel, #dificillabel {
+    font-family: 'Impact', 'fantasy';
+    color: #ffee00;
+    font-size: larger;
+    padding-left: 15px;
+    text-shadow: 1px 1px #000000;
+}
+#namelabel {
+    font-size: small;
 }
 
 #rankingbtnD {
@@ -264,7 +263,6 @@ body {
     align-items: start;
     padding: 6vh;
     flex-direction: column;
-
 }
 
 #tela label {
@@ -290,7 +288,8 @@ body {
 }
 
 td {
-    padding: 10px;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 #preLoader {
@@ -306,4 +305,25 @@ td {
     background-color: black;
     border-radius: 3px;
     padding: 4px;
+}
+
+#user, #ponto, #dificuldade, #bt_voltar {
+    display: none;
+}
+
+#bt_voltar {
+    font-size: 50px;
+    background-color: #ffee00;
+    color: #ff6452;
+    border: 5px black solid;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 47px;
+    margin-top: 60px;
+}
+
+#bt_voltar:hover {
+    background-color:#6d6600;
+    color: #730c00;
 }
