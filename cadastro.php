@@ -15,18 +15,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
     $passwordC = $_POST["passwordC"];
 
-    // Validação e inserção no banco de dados
-    if ($password !== $passwordC) {
-        echo "As senhas não coincidem. Tente novamente.";
-    } else {
-        $sql = "INSERT INTO usuarios (nome, lastname, nickname, email, pass, scorefacil, scoremedio, scoredificil) VALUES ('$name', '$lastname', '$nickname', '$email', '$password', 0, 0, 0);";
+    // Verificar se o nickname já existe no banco de dados
+    $checkNicknameQuery = "SELECT id FROM usuarios WHERE nickname = '$nickname'";
+    $result = $conexao->query($checkNicknameQuery);
 
-        if ($conexao->query($sql) === TRUE) {
-            // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
-            header("Location: chooseGame.php?nickname=".$nickname."?name=".$name."?lastname=".$lastname);
-            exit();
+    if ($result->num_rows > 0) {
+        echo "Este Nome de Usuário já existe.";
+    } else {
+        // Validação e inserção no banco de dados
+        if ($password !== $passwordC) {
+            echo "As senhas não coincidem. Tente novamente.";
         } else {
-            echo "Erro ao inserir no banco de dados. Tente novamente.";
+            $sql = "INSERT INTO usuarios (name, lastname, nickname, email, password) VALUES ('$name', '$lastname', '$nickname', '$email', '$password')";
+
+            if ($conexao->query($sql) === TRUE) {
+                // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
+                header("Location: chooseGame.html");
+                exit();
+            } else {
+                echo "Erro ao inserir no banco de dados. Tente novamente.";
+            }
         }
     }
 }
