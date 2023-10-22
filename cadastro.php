@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conexao->query($sql) === TRUE) {
                 // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
-                header("Location: chooseGame.html");
+                header("Location: chooseGame.php");
                 exit();
             } else {
                 echo "Erro ao inserir no banco de dados. Tente novamente.";

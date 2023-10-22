@@ -4,11 +4,8 @@ include_once("conexao.php");
 
 // Verifica se a conexão foi estabelecida com sucesso
 if ($conexao->connect_error) {
-    die("Falha na conexão com o banco de dados: ".$conexao->connect_error);
+    die("Falha na conexão com o banco de dados: " . $conexao->connect_error);
 }
-
-$usernameOrEmail = "";
-$password = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtém os dados do formulário
@@ -16,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Consulta o banco de dados para verificar o login
-    $sql = "SELECT * FROM usuarios WHERE (nickname = ? OR email = ?) AND pass = ?";
+    $sql = "SELECT * FROM usuarios WHERE (nickname = ? OR email = ?) AND password = ?";
     $stmt = $conexao->prepare($sql);
     $stmt->bind_param("sss", $usernameOrEmail, $usernameOrEmail, $password);
     $stmt->execute();
@@ -25,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // O login foi bem-sucedido
         // Redirecionar o usuário para chooseGame.html
-        header("Location: chooseGame.php?nicknameOrEmail=".$usernameOrEmail);
+        header("Location: chooseGame.php");
         exit; // Certifique-se de sair do script após o redirecionamento.
     } else {
         // Login falhou
