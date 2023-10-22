@@ -138,17 +138,20 @@ body {
     cursor: pointer;
 }
 
-#useDiv {
-    display: none;
-}
 
-#nicklabel, #namelabel, #facillabel, #mediolabel, #dificillabel {
+
+#nicklabel,
+#namelabel,
+#facillabel,
+#mediolabel,
+#dificillabel {
     font-family: 'Impact', 'fantasy';
     color: #ffee00;
     font-size: larger;
     padding-left: 15px;
     text-shadow: 1px 1px #000000;
 }
+
 #namelabel {
     font-size: small;
 }
@@ -179,7 +182,104 @@ body {
 
 }
 
+/* ------------INFORMACOES DO USUARIO------------*/
+#infoUser {
+    width: 60vh;
+    height: 50vh;
+    background-color: #ff6452;
+    border: 5px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 13px black;
+    display: none;
 
+    margin-top: 8vh;
+    margin-left: 79vh;
+    padding-left: 20vh;
+    z-index: 5;
+    position: absolute;
+
+    display: grid;
+    flex-direction: column;
+    place-items: center;
+
+
+}
+
+.buttonXInfo {
+    width: 100%;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3vh;
+}
+
+#btnXInfo {
+    width: 9vh;
+    height: 9vh;
+    background-color: #730c0000;
+    background-image: url('img/icon_x.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+
+
+
+}
+
+
+#infoUser img {
+    width: 18vh;
+    height: 20vh;
+    margin-top: -20%;
+}
+
+#useDiv {
+    margin-left: -5%;
+}
+
+/* ------------Ranking------------*/
+
+#containerRankin {
+    width: 80vh;
+    height: 60vh;
+    background-color: #ff6452;
+    border: 5px solid #f8e321;
+    border-radius: 10px;
+    box-shadow: -3px 2px 0px 13px black;
+    /* display: none;*/
+
+    margin-top: 8vh;
+    margin-left: 68vh;
+    z-index: 5;
+    position: absolute;
+    display: none;
+
+}
+
+
+.buttonXRank {
+    width: 100%;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 3vh;
+
+}
+
+#btnXRank {
+    width: 9vh;
+    height: 9vh;
+    background-color: #730c0000;
+    background-image: url('img/icon_x.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+
+
+
+}
 
 
 /* ------------BACKGROUND GAME------------*/
@@ -301,13 +401,17 @@ td {
     width: 30%;
 }
 
-#letra>b, #tela_fim>b {
+#letra>b,
+#tela_fim>b {
     background-color: black;
     border-radius: 3px;
     padding: 4px;
 }
 
-#user, #ponto, #dificuldade, #bt_voltar {
+#user,
+#ponto,
+#dificuldade,
+#bt_voltar {
     display: none;
 }
 
@@ -324,6 +428,6 @@ td {
 }
 
 #bt_voltar:hover {
-    background-color:#6d6600;
+    background-color: #6d6600;
     color: #730c00;
 }
