@@ -29,4 +29,35 @@ Após tudo isso. digite no seu navegador
 
 http://localhost/SignConnectGame/index.html.
 
+Código SQL
+-- Cria o banco de dados "sign_connect_game" com collation e character set definidos
+CREATE DATABASE IF NOT EXISTS sign_connect_game
+DEFAULT CHARACTER SET utf8mb4
+DEFAULT COLLATE utf8mb4_unicode_ci;
+
+-- Utiliza o banco de dados "sign_connect_game"
+USE sign_connect_game;
+
+-- Tabela de usuários
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    nickname VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    passwordC VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS scores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    scoreFacil INT,
+    scoreMedio INT,
+    scoreDificil INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+
 
