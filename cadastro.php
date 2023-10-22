@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql3 = "INSERT INTO scores (usuario_id, scoreFacil, scoreMedio, scoreDificil) VALUES ($id, 0, 0, 0)";
                 if ($conexao->query($sql3) === TRUE) {
                     // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
-                    header("Location: chooseGame.php?nickname=".$nickname);
+                    header("Location: chooseGame.php?usuario_id=".$id);
                     exit();
                 }else {
                     echo "Erro ao inserir no banco de dados. Tente novamente.";

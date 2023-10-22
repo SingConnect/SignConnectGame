@@ -22,7 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // O login foi bem-sucedido
         // Redirecionar o usuário para chooseGame.html
-        header("Location: chooseGame.php?usernameOrEmail=".$usernameOrEmail);
+        $sql2 = "SELECT id FROM usuarios WHERE (nickname = '$usernameOrEmail' OR email = '$usernameOrEmail')";
+        $result = $conexao->query($sql2);
+        while ($row = $result->fetch_assoc()) {
+            $id = $row["id"];
+        }
+        header("Location: chooseGame.php?usuario_id=".$id);
         exit; // Certifique-se de sair do script após o redirecionamento.
     } else {
         // Login falhou

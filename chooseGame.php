@@ -25,30 +25,21 @@
     $scoredificil = 0;
 
     // pega dados da tabela usuarios
-    if (isset($_GET["usernameOrEmail"])) {
-        $nicknameOrEmail = $_GET["usernameOrEmail"];
-        $sql = "SELECT id, name, lastname, nickname FROM usuarios WHERE (nickname='$nicknameOrEmail' OR email='$nicknameOrEmail')";
-        $result = $conexao->query($sql);
-    } else if (isset($_GET["nickname"])) {
-        $nickname = $_GET["nickname"];
-        $sql = "SELECT id, name, lastname, nickname FROM usuarios WHERE nickname='$nickname'";
+    if (isset($_GET["usuario_id"])) {
+        $id = $_GET["usuario_id"];
+        $sql = "SELECT name, lastname, nickname FROM usuarios WHERE id=$id";
         $result = $conexao->query($sql);
     }
     while ($row = $result->fetch_assoc()) {
-        $id = $row["id"];
         $name = $row["name"];
         $lastname = $row["lastname"];
         $nickname = $row["nickname"];
     }
 
     // pega dados da tabela sores
-    if (isset($_GET["nicknameOrEmail"])) {
-        $nicknameOrEmail = $_GET["nicknameOrEmail"];
-        $sql2 = "SELECT scoreFacil, scoreMedio, scoreDificil FROM scores WHERE (nickname='$nicknameOrEmail' OR email='$nicknameOrEmail')";
-        $result = $conexao->query($sql2);
-    } else if (isset($_GET["nickname"])) {
-        $nickname = $_GET["nickname"];
-        $sql2 = "SELECT scoreFacil, scoreMedio, scoreDificil FROM scores WHERE nickname='$nickname'";
+    if (isset($_GET["usuario_id"])) {
+        $id = $_GET["usuario_id"];
+        $sql2 = "SELECT scoreFacil, scoreMedio, scoreDificil FROM scores WHERE usuario_id=$id";
         $result = $conexao->query($sql2);
     }
     while ($row = $result->fetch_assoc()) {
@@ -56,16 +47,16 @@
         $scoremedio = $row["scoreMedio"];
         $scoredificil = $row["scoreDificil"];
     }
-
+    
     $conexao->close();
     ?>
     <script>
-        var name = <? php echo '"'.$name. '"' ?>,
-            lastname = <? php echo '"'.$lastname. '"' ?>,
-                $nickname = <? php echo '"'.$nickname. '"' ?>,
-                    $scorefacil = <? php echo $scorefacil ?>,
-                        $scoremedio = <? php echo $scoremedio ?>,
-                            $scoredificil = <? php echo $scoredificil ?>;
+        var name = <?php echo '"'.$name. '"' ?>,
+            lastname = <?php echo '"'.$lastname. '"' ?>,
+                nickname = <?php echo '"'.$nickname. '"' ?>,
+                    scorefacil = <?php echo $scorefacil ?>,
+                        scoremedio = <?php echo $scoremedio ?>,
+                            scoredificil = <?php echo $scoredificil ?>;
     </script>
 
 

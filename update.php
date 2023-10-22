@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conexao->query($sql) === TRUE) {
         // Redireciona para a página "chooseGame.php" após o registro bem-sucedido
-        header("Location: chooseGame.php?usernameOrEmail=".$nickname);
+        header("Location: chooseGame.php?usuario_id=$id");
         exit();
     } else {
         echo "Erro ao inserir no banco de dados. Tente novamente.";
