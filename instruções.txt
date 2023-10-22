@@ -58,3 +58,6 @@ CREATE TABLE IF NOT EXISTS scores (
     scoreDificil INT,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
+
+-- adiciona nova coluna à Tabela scores
+ALTER TABLE scores ADD rating INT;

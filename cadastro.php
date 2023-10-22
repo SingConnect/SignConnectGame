@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 while ($row = $result->fetch_assoc()) {
                     $id = $row["id"];
                 }
-                $sql3 = "INSERT INTO scores (usuario_id, scoreFacil, scoreMedio, scoreDificil) VALUES ($id, 0, 0, 0)";
+                $sql3 = "INSERT INTO scores (usuario_id, scoreFacil, scoreMedio, scoreDificil, rating) VALUES ($id, 0, 0, 0, 0)";
                 if ($conexao->query($sql3) === TRUE) {
                     // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
                     header("Location: chooseGame.php?usuario_id=".$id);

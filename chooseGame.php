@@ -23,6 +23,7 @@
     $scorefacil = 0;
     $scoremedio = 0;
     $scoredificil = 0;
+    $rating = 0;
 
     // pega dados da tabela usuarios
     if (isset($_GET["usuario_id"])) {
@@ -46,9 +47,47 @@
         $scorefacil = $row["scoreFacil"];
         $scoremedio = $row["scoreMedio"];
         $scoredificil = $row["scoreDificil"];
+        $rating = $row["rating"];
+    }
+
+    // pegar dados de todos os usuarios e adicionar en um array
+    $sql = "SELECT * FROM usuarios";
+    $result = $conexao->query($sql);
+
+    $rank = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $rank[$row['id']] = ['nickname' => $row['nickname']];
+    }
+
+    foreach (array_keys($rank) as $i) {
+        $sql = "SELECT * FROM scores WHERE usuario_id=$i";
+        $result = $conexao->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $rank[$i]['scoreFacil'] = $row['scoreFacil'];
+            $rank[$i]['scoreMedio'] = $row['scoreMedio'];
+            $rank[$i]['scoreDificil'] = $row['scoreDificil'];
+            $rank[$i]['rating'] = $row['rating'];
+        }
     }
     
     $conexao->close();
+
+    // criando uma lista ordenada dos ratings
+    $ratingSort = [];
+    foreach (array_keys($rank) as $iii) {
+        array_push($ratingSort, $rank[$iii]['rating']);
+    }
+    rsort($ratingSort);
+
+    $rankSort = [];
+    foreach ($ratingSort as $r) {
+        foreach (array_keys($rank) as $iv) {
+            if ($rank[$iv]['rating'] === $r) {
+                $rankSort[$rank[$iv]['nickname']."#".$iv] = $r;
+            }
+        }
+    }
     ?>
     <script>
         var name = <?php echo '"'.$name. '"' ?>,
@@ -56,7 +95,8 @@
                 nickname = <?php echo '"'.$nickname. '"' ?>,
                     scorefacil = <?php echo $scorefacil ?>,
                         scoremedio = <?php echo $scoremedio ?>,
-                            scoredificil = <?php echo $scoredificil ?>;
+                            scoredificil = <?php echo $scoredificil ?>,
+                                rating = <?php echo $rating ?>;
     </script>
 
 
@@ -65,24 +105,43 @@
             <button id="btnXInfo"></button>
         </div>
 
-        <img src="img/icon_user.png" alt="">
+        <img src="img/icon_user.png">
 
         <div id="useDiv">
-            <p id="nicklabel">
-                <?php echo $nickname ?>
-            </p>
-            <p id="namelabel">
-                <?php echo $name . " " . $lastname ?>
-            </p><br>
-            <p id="facillabel">Score (facil):
-                <?php echo $scorefacil ?>
-            </p>
-            <p id="mediolabel">Score (medio):
-                <?php echo $scoremedio ?>
-            </p>
-            <p id="dificillabel">Score (dificil):
-                <?php echo $scoredificil ?>
-            </p>
+            <table id="userTabela">
+                <tr>
+                    <td>
+                        <p id="nicklabel">
+                            <?php echo $nickname ?>
+                        </p>
+                        <p id="namelabel">
+                            <?php echo $name . " " . $lastname ?>
+                        </p>
+                    </td>
+                    <td>
+                        <p id="pRating">Rating: <?php echo $rating?></p>
+                    </td>
+                </tr>
+            </table><br>
+
+            <dl>
+                <dt><p id="tituloScore">Ultimo Score</p></dt>
+                <dd>
+                    <p id="facillabel">Facil: 
+                        <?php echo $scorefacil ?>
+                    </p>
+                </dd>
+                <dd>
+                    <p id="mediolabel">Medio: 
+                        <?php echo $scoremedio ?>
+                    </p>
+                </dd>
+                <dd>
+                    <p id="dificillabel">Dificil: 
+                        <?php echo $scoredificil ?>
+                    </p>
+                </dd>
+            </dl>
         </div>
 
     </div>
@@ -92,7 +151,17 @@
             <button id="btnXRank"></button>
         </div>
 
-
+        <div id="ranckDiv">
+            <h1>Rating Rankin</h1>
+            <table id="rankTabela" border="1">
+                <tr><th>RATING</th><th>NICK NAME</th></tr>
+                <?php
+                    foreach (array_keys($rankSort) as $ii) {
+                        echo "<tr><td>".$rankSort[$ii]."</td><td>".$ii."</td></th>";
+                    }
+                ?>
+            </table>
+        </div>
     </div>
 
     <div class="container">
@@ -166,6 +235,7 @@
                     <label id="tela_fim2"></label>
                     <input type="text" name="user" id="user" value=<?php echo '"' . $id . '"' ?>>
                     <input type="text" name="ponto" id="ponto">
+                    <input type="text" name="rating" id="rating">
                     <input type="text" name="dificuldade" id="dificuldade">
                     <input type="submit" id="bt_voltar" value="Voltar">
                 </form>

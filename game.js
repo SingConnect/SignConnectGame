@@ -1,9 +1,9 @@
-const URL1 = "https://teachablemachine.withgoogle.com/models/zE8ewlqgV/"; //[a, e, o, s]
-const URL2 = "https://teachablemachine.withgoogle.com/models/-MTOi0V-k/"; //[c, m, n, x]
-const URL3 = "https://teachablemachine.withgoogle.com/models/GgYftWEpC/"; //[d, g, i, l]
-const URL4 = "https://teachablemachine.withgoogle.com/models/_RDUmEOW2/"; //[j, q, p, k, h]
-const URL5 = "https://teachablemachine.withgoogle.com/models/c3xWBoc1n/"; //[f, t, w, y]
-const URL6 = "https://teachablemachine.withgoogle.com/models/VVGtsI2Rj/"; //[b, r, v, u]
+const URL1 = "https://teachablemachine.withgoogle.com/models/3jdNcyrIH/"; //[a, e, o, s]
+const URL2 = "https://teachablemachine.withgoogle.com/models/Io54LvZLm/"; //[c, m, n, x]
+const URL3 = "https://teachablemachine.withgoogle.com/models/xCDV6H0vz/"; //[d, g, i, l]
+const URL4 = "https://teachablemachine.withgoogle.com/models/5LYFvq4vE/"; //[j, q, p, k, h]
+const URL5 = "https://teachablemachine.withgoogle.com/models/Xg2xVisa1/"; //[f, t, w, y]
+const URL6 = "https://teachablemachine.withgoogle.com/models/M2kqemKW5/"; //[b, r, v, u]
 
 var model1, model2, model3, model4, model5, model6, webcam, labelContainer, RAFloop, RAFVM,
     letras1 = ['a', 'e', 'o' ,'s'], letras2 = ['c', 'm', 'n', 'x'], letras3 = ['d', 'g', 'i', 'l'], letras4 = ['j', 'q', 'p', 'k', 'h'], letras5 = ['f', 't', 'w', 'y'], letras6 = ['b', 'r', 'v', 'u'],
@@ -120,7 +120,6 @@ async function predict() {
         labelContainer.style.display = 'none';
         document.getElementById("bt_voltar").style.display = 'block';
         document.getElementById("ponto").value = score;
-        document.getElementById("btnHome").style.display = 'none';
             
         divTela.innerHTML = `<p class="p1">O SEU TEMPO ACABOU.</p><br><br><p class="p2">Score: <b>${score}</b> pontos!</p>`;
 
@@ -129,6 +128,9 @@ async function predict() {
         } catch (error) {
             console.log(error);
         }
+
+        rating += calculaTaxa();
+        document.getElementById("rating").value = rating;
     }
     
     if (score <= 5) {
@@ -202,6 +204,30 @@ function finalize() {
     labelScore.innerHTML = "";
     labelLetra.innerHTML = "";
     labelContainer.innerHTML = "";
+}
+
+function calculaTaxa() {
+    if (facilBool) {
+        if (score >= scorefacil) {
+            return Math.floor(score*2/10);
+        } else {
+            return -1*Math.floor(score*2/10);
+        }
+    }
+    if (medioBool) {
+        if (score >= scoremedo) {
+            return Math.floor(score*3/10);
+        } else {
+            return -1*Math.floor(score*3/10);
+        }
+    }
+    if (dificilBool) {
+        if (score >= scoredificil) {
+            return Math.floor(score*5/10);
+        } else {
+            return -1*Math.floor(score*5/10);
+        }
+    }
 }
 
 function btnFacil() {

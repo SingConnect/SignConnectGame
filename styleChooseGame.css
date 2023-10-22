@@ -193,14 +193,22 @@ body {
 #namelabel,
 #facillabel,
 #mediolabel,
-#dificillabel {
+#dificillabel,
+#tituloScore,
+#pRating {
     font-family: 'Impact', 'fantasy';
     color: #ffee00;
     font-size: larger;
-    padding-left: 15px;
     text-shadow: 1px 1px #000000;
 }
 
+dl {
+    padding-left: 20px;
+}
+
+dd {
+    padding-left: 20px;
+}
 #namelabel {
     font-size: small;
 }
@@ -228,7 +236,7 @@ body {
 }
 
 
-#infoUser>div>img {
+#infoUser img {
     width: 18vh;
     height: 20vh;
     margin-top: -20%;
@@ -410,7 +418,8 @@ td {
 #user,
 #ponto,
 #dificuldade,
-#bt_voltar {
+#bt_voltar,
+#rating {
     display: none;
 }
 
