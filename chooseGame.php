@@ -60,13 +60,50 @@
     $conexao->close();
     ?>
     <script>
-        var name = <?php echo '"' . $name . '"' ?>,
-            lastname = <?php echo '"' . $lastname . '"' ?>,
-            $nickname = <?php echo '"' . $nickname . '"' ?>,
-            $scorefacil = <?php echo $scorefacil ?>,
-            $scoremedio = <?php echo $scoremedio ?>,
-            $scoredificil = <?php echo $scoredificil ?>;
+        var name = <? php echo '"'.$name. '"' ?>,
+            lastname = <? php echo '"'.$lastname. '"' ?>,
+                $nickname = <? php echo '"'.$nickname. '"' ?>,
+                    $scorefacil = <? php echo $scorefacil ?>,
+                        $scoremedio = <? php echo $scoremedio ?>,
+                            $scoredificil = <? php echo $scoredificil ?>;
     </script>
+
+
+    <div id="infoUser">
+        <div class="buttonXInfo">
+            <button id="btnXInfo"></button>
+        </div>
+
+        <img src="img/icon_user.png" alt="">
+
+        <div id="useDiv">
+            <p id="nicklabel">
+                <?php echo $nickname ?>
+            </p>
+            <p id="namelabel">
+                <?php echo $name . " " . $lastname ?>
+            </p><br>
+            <p id="facillabel">Score (facil):
+                <?php echo $scorefacil ?>
+            </p>
+            <p id="mediolabel">Score (medio):
+                <?php echo $scoremedio ?>
+            </p>
+            <p id="dificillabel">Score (dificil):
+                <?php echo $scoredificil ?>
+            </p>
+        </div>
+
+    </div>
+
+    <div id="containerRankin">
+        <div class="buttonXRank">
+            <button id="btnXRank"></button>
+        </div>
+
+
+    </div>
+
     <div class="container">
 
         <nav id="navbar">
@@ -83,13 +120,6 @@
                 <button id="dropbtnX"></button>
                 <div id="dropdown_content">
                     <button id="userbtnD"></button>
-                    <div id="useDiv">
-                        <p id="nicklabel">Nick Name: <?php echo $nickname ?></p>
-                        <p id="namelabel"><?php echo $name . " " . $lastname ?></p><br>
-                        <p id="facillabel">Score (facil): <?php echo $scorefacil ?></p>
-                        <p id="mediolabel">Score (medio): <?php echo $scoremedio ?></p>
-                        <p id="dificillabel">Score (dificil): <?php echo $scoredificil ?></p>
-                    </div>
                     <button id="rankingbtnD"></button>
                     <a href="logout.php"><button id="logoutbtnD"></button></a>
                 </div>
@@ -168,7 +198,8 @@
 
     <link rel="stylesheet" type="text/css" href="styleChooseGame.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="palavras.js"></script>
     <script src="game.js"></script>
     <script src="style_action.js"></script>

@@ -10,8 +10,11 @@ var dropdown_content = document.getElementById('dropdown_content');
 var userbtnD = document.getElementById("userbtnD");
 var useDiv = document.getElementById("useDiv");
 var rankingbtnD = document.getElementById("rankingbtnD");
+var containerRankin = document.getElementById("containerRankin");
 var logoutbtnD = document.getElementById("logoutbtnD");
-useDiv.style.display = 'none';
+
+var infoUser = document.getElementById("infoUser");
+var btnXInfo = document.getElementById("btnXInfo");
 
 dropbtn.addEventListener('click', function () {
     dropbtn.style.display = 'none';
@@ -25,18 +28,23 @@ dropbtnX.addEventListener('click', function () {
     dropdown_content.style.display = 'none';
 });
 
+
 userbtnD.addEventListener('click', function () {
-    if (useDiv.style.display === 'none') {
-        useDiv.style.display = 'block';
-        rankingbtnD.style.display = 'none';
-        logoutbtnD.style.display = 'none';
-    } else if (useDiv.style.display === 'block') {
-        useDiv.style.display = 'none';
-        rankingbtnD.style.display = 'block';
-        logoutbtnD.style.display = 'block';
-    }
+    infoUser.style.display = 'block';
 });
 
+btnXInfo.addEventListener('click', function () {
+    infoUser.style.display = 'none';
+});
+
+
+rankingbtnD.addEventListener('click', function () {
+    containerRankin.style.display = 'block';
+});
+
+btnXRank.addEventListener('click', function () {
+    containerRankin.style.display = 'none';
+});
 /* evento de clique ao botão seta / a div com os seguinte id home choose_game, esta recebendo
 novos estilos */
 
