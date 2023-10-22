@@ -134,6 +134,15 @@ body {
 
 }
 
+#bttnCadastro {
+    background-color: transparent;
+    background-image: url('img/cadastro.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
 
 
 /* ------------CADASTRO------------*/
@@ -181,6 +190,17 @@ body {
 
 }
 
+#bttnLogin {
+    background-color: transparent;
+    background-image: url('img/login.png');
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    display: none;
+
+}
+
+
 /* ------------BARRA DE ROLAGEM CADASTRO------------*/
 
 #cadastro::-webkit-scrollbar {
@@ -206,4 +226,139 @@ body {
     /* Cor da alça da barra de rolagem */
     border-radius: 6px;
     /* Raio da alça da barra de rolagem */
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    /* ------------login_cadastro------------*/
+
+    #login_cadastro {
+        width: 42vh;
+        height: 80vh;
+
+    }
+
+
+    #bttnLogin {
+        width: 20vh;
+        height: 9vh;
+        margin-top: 5vh;
+        display: block;
+
+    }
+
+    /* ------------CADASTRO------------*/
+
+    #cadastro {
+        border-right: 4px solid rgba(0, 0, 0, 0);
+        display: none;
+    }
+
+    .img_cadastro {
+        width: 35vh;
+        height: 7vh;
+        margin-top: 2vh;
+        margin-left: 2vh;
+    }
+
+    #cadastro form input {
+        width: 35vh;
+        height: 8vh;
+    }
+
+    /* ------------LOGIN------------*/
+
+    #login form input {
+        width: 35vh;
+        font-size: 1rem;
+    }
+
+    #login form label img {
+        width: 15vh;
+        height: 10vh;
+        object-fit: cover;
+        margin-top: 10vh;
+
+    }
+
+
+    #bttnCadastro {
+        width: 30vh;
+        height: 9vh;
+        margin-top: 5vh;
+        display: block;
+
+    }
+
+
+
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    /* ------------login_cadastro------------*/
+
+    #login_cadastro {
+        width: 70vh;
+        height: 80vh;
+
+    }
+
+
+    #bttnLogin {
+        width: 20vh;
+        height: 9vh;
+        margin-top: 5vh;
+        display: block;
+
+    }
+
+    /* ------------CADASTRO------------*/
+
+    #cadastro {
+        border-right: 4px solid rgba(0, 0, 0, 0);
+        display: none;
+    }
+
+    .img_cadastro {
+        width: 35vh;
+        height: 7vh;
+        margin-top: 2vh;
+        margin-left: 17vh;
+    }
+
+    #cadastro form input {
+        width: 55vh;
+        font-size: 2rem;
+    }
+
+    /* ------------LOGIN------------*/
+
+    #login form input {
+        width: 55vh;
+        font-size: 2rem;
+    }
+
+    #login form label img {
+        width: 15vh;
+        height: 10vh;
+        object-fit: cover;
+        margin-top: 10vh;
+
+    }
+
+
+    #bttnCadastro {
+        width: 30vh;
+        height: 9vh;
+        margin-top: 5vh;
+        display: block;
+
+    }
+
+
+
 }
