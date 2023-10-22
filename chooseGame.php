@@ -143,7 +143,7 @@
                         </tr>
                     </table>
                     <label id="tela_fim2"></label>
-                    <input type="text" name="user" id="user" value=<?php echo '"' . $nickname . '"' ?>>
+                    <input type="text" name="user" id="user" value=<?php echo '"' . $id . '"' ?>>
                     <input type="text" name="ponto" id="ponto">
                     <input type="text" name="dificuldade" id="dificuldade">
                     <input type="submit" id="bt_voltar" value="Voltar">
