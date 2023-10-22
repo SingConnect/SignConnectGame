@@ -26,12 +26,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password !== $passwordC) {
             echo "As senhas não coincidem. Tente novamente.";
         } else {
-            $sql = "INSERT INTO usuarios (name, lastname, nickname, email, password) VALUES ('$name', '$lastname', '$nickname', '$email', '$password')";
-
+            $sql = "INSERT INTO usuarios (name, lastname, nickname, email, password, passwordC) VALUES ('$name', '$lastname', '$nickname', '$email', '$password', '$passwordC')";
             if ($conexao->query($sql) === TRUE) {
-                // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
-                header("Location: chooseGame.php");
-                exit();
+                $sql2 = "SELECT id FROM usuarios WHERE nickname='$nickname'";
+                $result = $conexao->query($sql2);
+                while ($row = $result->fetch_assoc()) {
+                    $id = $row["id"];
+                }
+                $sql3 = "INSERT INTO scores (usuario_id, scoreFacil, scoreMedio, scoreDificil) VALUES ($id, 0, 0, 0)";
+                if ($conexao->query($sql3) === TRUE) {
+                    // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
+                    header("Location: chooseGame.php?nickname=".$nickname);
+                    exit();
+                }else {
+                    echo "Erro ao inserir no banco de dados. Tente novamente.";
+                }
             } else {
                 echo "Erro ao inserir no banco de dados. Tente novamente.";
             }

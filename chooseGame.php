@@ -16,6 +16,7 @@
         die("Falha na conexão com o banco de dados: " . $conexao->connect_error);
     }
 
+    $id = 0;
     $name = "";
     $lastname = "";
     $nickname = "";
@@ -23,25 +24,37 @@
     $scoremedio = 0;
     $scoredificil = 0;
 
-    if (isset($_GET["nicknameOrEmail"])) {
-        $nicknameOrEmail = $_GET["nicknameOrEmail"];
-        $sql = "SELECT nome, lastname, nickname, scorefacil, scoremedio, scoredificil FROM usuarios WHERE (nickname='$nicknameOrEmail' OR email='$nicknameOrEmail')";
+    // pega dados da tabela usuarios
+    if (isset($_GET["usernameOrEmail"])) {
+        $nicknameOrEmail = $_GET["usernameOrEmail"];
+        $sql = "SELECT id, name, lastname, nickname FROM usuarios WHERE (nickname='$nicknameOrEmail' OR email='$nicknameOrEmail')";
         $result = $conexao->query($sql);
     } else if (isset($_GET["nickname"])) {
         $nickname = $_GET["nickname"];
-        $sql = "SELECT nome, lastname, nickname, scorefacil, scoremedio, scoredificil FROM usuarios WHERE nickname='$$nickname'";
+        $sql = "SELECT id, name, lastname, nickname FROM usuarios WHERE nickname='$nickname'";
         $result = $conexao->query($sql);
     }
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while ($row = $result->fetch_assoc()) {
-            $name = $row["nome"];
-            $lastname = $row["lastname"];
-            $nickname = $row["nickname"];
-            $scorefacil = $row["scorefacil"];
-            $scoremedio = $row["scoremedio"];
-            $scoredificil = $row["scoredificil"];
-        }
+    while ($row = $result->fetch_assoc()) {
+        $id = $row["id"];
+        $name = $row["name"];
+        $lastname = $row["lastname"];
+        $nickname = $row["nickname"];
+    }
+
+    // pega dados da tabela sores
+    if (isset($_GET["nicknameOrEmail"])) {
+        $nicknameOrEmail = $_GET["nicknameOrEmail"];
+        $sql2 = "SELECT scoreFacil, scoreMedio, scoreDificil FROM scores WHERE (nickname='$nicknameOrEmail' OR email='$nicknameOrEmail')";
+        $result = $conexao->query($sql2);
+    } else if (isset($_GET["nickname"])) {
+        $nickname = $_GET["nickname"];
+        $sql2 = "SELECT scoreFacil, scoreMedio, scoreDificil FROM scores WHERE nickname='$nickname'";
+        $result = $conexao->query($sql2);
+    }
+    while ($row = $result->fetch_assoc()) {
+        $scorefacil = $row["scoreFacil"];
+        $scoremedio = $row["scoreMedio"];
+        $scoredificil = $row["scoreDificil"];
     }
 
     $conexao->close();

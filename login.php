@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         // O login foi bem-sucedido
         // Redirecionar o usuário para chooseGame.html
-        header("Location: chooseGame.php");
+        header("Location: chooseGame.php?usernameOrEmail=".$usernameOrEmail);
         exit; // Certifique-se de sair do script após o redirecionamento.
     } else {
         // Login falhou
