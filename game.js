@@ -5,7 +5,7 @@ const URL4 = "https://teachablemachine.withgoogle.com/models/5LYFvq4vE/"; //[j, 
 const URL5 = "https://teachablemachine.withgoogle.com/models/Xg2xVisa1/"; //[f, t, w, y]
 const URL6 = "https://teachablemachine.withgoogle.com/models/M2kqemKW5/"; //[b, r, v, u]
 
-var model1, model2, model3, model4, model5, model6, webcam, labelContainer, RAFloop, RAFVM,
+var model1, model2, model3, model4, model5, model6, webcam, labelContainer, RAFloop, RAFVM, ct,
     letras1 = ['a', 'e', 'o', 's'], letras2 = ['c', 'm', 'n', 'x'], letras3 = ['d', 'g', 'i', 'l'], letras4 = ['j', 'q', 'p', 'k', 'h'], letras5 = ['f', 't', 'w', 'y'], letras6 = ['b', 'r', 'v', 'u'],
     letras = ['a', 'c', 'e', 'm', 'n', 'o', 's', 'x', 'd', 'g', 'i', 'l', 'j', 'q', 'p', 'b', 'f', 'r', 't', 'u', 'v', 'w', 'y', 'k', 'h'],
     letra = letras[Math.floor(Math.random() * letras.length)], score = 0, tempo,
@@ -46,6 +46,7 @@ function verificaModel() {
     }
 }
 async function init() {
+    ct = false;
     /* Convenience function to setup a webcam
     / Função de conveniência para configurar uma webcam */
 
@@ -120,6 +121,8 @@ async function predict() {
         labelContainer.style.display = 'none';
         document.getElementById("bt_voltar").style.display = 'block';
         document.getElementById("ponto").value = score;
+        document.getElementById("btnHome").style.display = 'none';
+        document.getElementById("btnSeta").style.display = 'none';
 
         divTela.innerHTML = `<p class="p1">O SEU TEMPO ACABOU.</p><br><br><p class="p2">Score: <b>${score}</b> pontos!</p>`;
 
@@ -207,26 +210,29 @@ function finalize() {
 }
 
 function calculaTaxa() {
-    if (facilBool) {
-        if (score >= scorefacil) {
-            return Math.floor(score * 2 / 10);
-        } else {
-            return -1 * Math.floor(score * 2 / 10);
+    if (ct === false) {
+        if (facilBool) {
+            if (score >= scorefacil) {
+                return Math.floor(score * 2 / 10);
+            } else {
+                return -1 * Math.floor(score * 2 / 10);
+            }
         }
-    }
-    if (medioBool) {
-        if (score >= scoremedo) {
-            return Math.floor(score * 3 / 10);
-        } else {
-            return -1 * Math.floor(score * 3 / 10);
+        if (medioBool) {
+            if (score >= scoremedio) {
+                return Math.floor(score * 3 / 10);
+            } else {
+                return -1 * Math.floor(score * 3 / 10);
+            }
         }
-    }
-    if (dificilBool) {
-        if (score >= scoredificil) {
-            return Math.floor(score * 5 / 10);
-        } else {
-            return -1 * Math.floor(score * 5 / 10);
+        if (dificilBool) {
+            if (score >= scoredificil) {
+                return Math.floor(score * 5 / 10);
+            } else {
+                return -1 * Math.floor(score * 5 / 10);
+            }
         }
+        ct = true;
     }
 }
 

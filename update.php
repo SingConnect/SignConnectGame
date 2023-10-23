@@ -10,11 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dificuldade = $_POST["dificuldade"];
     $score = $_POST["ponto"];
     $id = $_POST["user"];
+    $rating = $_POST["rating"];
     $sql = "";
 
-    if ($dificuldade === 'f') $sql = "UPDATE scores SET scorefacil=".$score.", rating=".$rating." WHERE usuario_id=$id;";
-    if ($dificuldade === 'm') $sql = "UPDATE scores SET scoremedio=".$score.", rating=".$rating." WHERE usuario_id=$id";
-    if ($dificuldade === 'd') $sql = "UPDATE scores SET scoredificil=".$score.", rating=".$rating." WHERE usuario_id=$id";
+    if ($dificuldade === 'f') $sql = "UPDATE scores SET scoreFacil=".$score.", rating=".$rating." WHERE usuario_id=$id;";
+    if ($dificuldade === 'm') $sql = "UPDATE scores SET scoreMedio=".$score.", rating=".$rating." WHERE usuario_id=$id";
+    if ($dificuldade === 'd') $sql = "UPDATE scores SET scoreDificil=".$score.", rating=".$rating." WHERE usuario_id=$id";
 
     if ($conexao->query($sql) === TRUE) {
         // Redireciona para a página "chooseGame.php" após o registro bem-sucedido

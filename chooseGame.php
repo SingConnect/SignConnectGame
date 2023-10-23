@@ -90,13 +90,13 @@
     }
     ?>
     <script>
-        var name = <? php echo '"'.$name. '"' ?>,
-            lastname = <? php echo '"'.$lastname. '"' ?>,
-                nickname = <? php echo '"'.$nickname. '"' ?>,
-                    scorefacil = <? php echo $scorefacil ?>,
-                        scoremedio = <? php echo $scoremedio ?>,
-                            scoredificil = <? php echo $scoredificil ?>,
-                                rating = <? php echo $rating ?>;
+        var name = <?php echo '"'.$name. '"' ?>,
+            lastname = <?php echo '"'.$lastname. '"' ?>,
+                nickname = <?php echo '"'.$nickname. '"' ?>,
+                    scorefacil = <?php echo $scorefacil ?>,
+                        scoremedio = <?php echo $scoremedio ?>,
+                            scoredificil = <?php echo $scoredificil ?>,
+                                rating = <?php echo $rating ?>;
     </script>
 
 
@@ -187,7 +187,7 @@
                     
                         echo $ii . "</td></tr>";
                     }
-                            ?>
+                    ?>
                 </table>
             </div>
         </div>
