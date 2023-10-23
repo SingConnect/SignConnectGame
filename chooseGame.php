@@ -90,13 +90,13 @@
     }
     ?>
     <script>
-        var name = <?php echo '"'.$name. '"' ?>,
-            lastname = <?php echo '"'.$lastname. '"' ?>,
-                nickname = <?php echo '"'.$nickname. '"' ?>,
-                    scorefacil = <?php echo $scorefacil ?>,
-                        scoremedio = <?php echo $scoremedio ?>,
-                            scoredificil = <?php echo $scoredificil ?>,
-                                rating = <?php echo $rating ?>;
+        var name = <?php echo '"' . $name . '"' ?>,
+            lastname = <?php echo '"' . $lastname . '"' ?>,
+            nickname = <?php echo '"' . $nickname . '"' ?>,
+            scorefacil = <?php echo $scorefacil ?>,
+            scoremedio = <?php echo $scoremedio ?>,
+            scoredificil = <?php echo $scoredificil ?>,
+            rating = <?php echo $rating ?>;
     </script>
 
 
@@ -161,7 +161,7 @@
             <div class="table-container">
                 <table id="rankTabela" border="1">
                     <tr>
-                        <th>SCORE</th>
+                        <th>RATING</th>
                         <th>NICK NAME</th>
                     </tr>
                     <?php
@@ -170,7 +170,7 @@
                         echo "<tr>
                                 <td id='tdscore'>" . $rankSort[$ii] . "</td>
                                 <td id='tdnickname'>";
-                    
+
                         if ($index < 3) {
                             // Adicione imagens diferentes para as três primeiras linhas
                             if ($index === 0) {
@@ -184,7 +184,7 @@
                             // Adicione a mesma imagem para as outras linhas
                             echo "<img id='lugar_0' src='img/lugar_0.png' alt='Imagem Padrão'>";
                         }
-                    
+
                         echo $ii . "</td></tr>";
                     }
                     ?>
@@ -291,8 +291,7 @@
 
     <link rel="stylesheet" type="text/css" href="styleChooseGame.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
     <script src="palavras.js"></script>
     <script src="game.js"></script>
     <script src="style_action.js"></script>
