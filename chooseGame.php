@@ -40,7 +40,7 @@
     // pega dados da tabela sores
     if (isset($_GET["usuario_id"])) {
         $id = $_GET["usuario_id"];
-        $sql2 = "SELECT scoreFacil, scoreMedio, scoreDificil FROM scores WHERE usuario_id=$id";
+        $sql2 = "SELECT * FROM scores WHERE usuario_id=$id";
         $result = $conexao->query($sql2);
     }
     while ($row = $result->fetch_assoc()) {
@@ -70,7 +70,7 @@
             $rank[$i]['rating'] = $row['rating'];
         }
     }
-    
+
     $conexao->close();
 
     // criando uma lista ordenada dos ratings
@@ -84,19 +84,19 @@
     foreach ($ratingSort as $r) {
         foreach (array_keys($rank) as $iv) {
             if ($rank[$iv]['rating'] === $r) {
-                $rankSort[$rank[$iv]['nickname']."#".$iv] = $r;
+                $rankSort[$rank[$iv]['nickname'] . "#" . $iv] = $r;
             }
         }
     }
     ?>
     <script>
-        var name = <?php echo '"'.$name. '"' ?>,
-            lastname = <?php echo '"'.$lastname. '"' ?>,
-                nickname = <?php echo '"'.$nickname. '"' ?>,
-                    scorefacil = <?php echo $scorefacil ?>,
-                        scoremedio = <?php echo $scoremedio ?>,
-                            scoredificil = <?php echo $scoredificil ?>,
-                                rating = <?php echo $rating ?>;
+        var name = <? php echo '"'.$name. '"' ?>,
+            lastname = <? php echo '"'.$lastname. '"' ?>,
+                nickname = <? php echo '"'.$nickname. '"' ?>,
+                    scorefacil = <? php echo $scorefacil ?>,
+                        scoremedio = <? php echo $scoremedio ?>,
+                            scoredificil = <? php echo $scoredificil ?>,
+                                rating = <? php echo $rating ?>;
     </script>
 
 
@@ -119,25 +119,29 @@
                         </p>
                     </td>
                     <td>
-                        <p id="pRating">Rating: <?php echo $rating?></p>
+                        <p id="pRating">Rating:
+                            <?php echo $rating ?>
+                        </p>
                     </td>
                 </tr>
             </table><br>
 
             <dl>
-                <dt><p id="tituloScore">Ultimo Score</p></dt>
+                <dt>
+                    <p id="tituloScore">Ultimo Score</p>
+                </dt>
                 <dd>
-                    <p id="facillabel">Facil: 
+                    <p id="facillabel">Facil:
                         <?php echo $scorefacil ?>
                     </p>
                 </dd>
                 <dd>
-                    <p id="mediolabel">Medio: 
+                    <p id="mediolabel">Medio:
                         <?php echo $scoremedio ?>
                     </p>
                 </dd>
                 <dd>
-                    <p id="dificillabel">Dificil: 
+                    <p id="dificillabel">Dificil:
                         <?php echo $scoredificil ?>
                     </p>
                 </dd>
@@ -152,17 +156,44 @@
         </div>
 
         <div id="ranckDiv">
-            <h1>Rating Rankin</h1>
-            <table id="rankTabela" border="1">
-                <tr><th>RATING</th><th>NICK NAME</th></tr>
-                <?php
-                    foreach (array_keys($rankSort) as $ii) {
-                        echo "<tr><td>".$rankSort[$ii]."</td><td>".$ii."</td></th>";
+            <img src="img/ranking_l.png" alt="">
+            <h1>Ranking</h1>
+            <div class="table-container">
+                <table id="rankTabela" border="1">
+                    <tr>
+                        <th>SCORE</th>
+                        <th>NICK NAME</th>
+                    </tr>
+                    <?php
+
+                    foreach (array_keys($rankSort) as $index => $ii) {
+                        echo "<tr>
+                                <td id='tdscore'>" . $rankSort[$ii] . "</td>
+                                <td id='tdnickname'>";
+                    
+                        if ($index < 3) {
+                            // Adicione imagens diferentes para as três primeiras linhas
+                            if ($index === 0) {
+                                echo "<img id='lugar_1' src='img/lugar_1.png' alt='Imagem 1'>";
+                            } elseif ($index === 1) {
+                                echo "<img id='lugar_2' src='img/lugar_2.png' alt='Imagem 2'>";
+                            } else {
+                                echo "<img id='lugar_3' src='img/lugar_3.png' alt='Imagem 3'>";
+                            }
+                        } else {
+                            // Adicione a mesma imagem para as outras linhas
+                            echo "<img id='lugar_0' src='img/lugar_0.png' alt='Imagem Padrão'>";
+                        }
+                    
+                        echo $ii . "</td></tr>";
                     }
-                ?>
-            </table>
+                            ?>
+                </table>
+            </div>
         </div>
     </div>
+
+
 
     <div class="container">
 
@@ -245,6 +276,7 @@
 
 
         </div>
+        <br><br>
 
 
 

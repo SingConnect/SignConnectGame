@@ -6,8 +6,8 @@ const URL5 = "https://teachablemachine.withgoogle.com/models/Xg2xVisa1/"; //[f, 
 const URL6 = "https://teachablemachine.withgoogle.com/models/M2kqemKW5/"; //[b, r, v, u]
 
 var model1, model2, model3, model4, model5, model6, webcam, labelContainer, RAFloop, RAFVM,
-    letras1 = ['a', 'e', 'o' ,'s'], letras2 = ['c', 'm', 'n', 'x'], letras3 = ['d', 'g', 'i', 'l'], letras4 = ['j', 'q', 'p', 'k', 'h'], letras5 = ['f', 't', 'w', 'y'], letras6 = ['b', 'r', 'v', 'u'],
-    letras = ['a', 'c', 'e', 'm', 'n', 'o', 's' , 'x', 'd', 'g', 'i', 'l', 'j', 'q', 'p', 'b', 'f', 'r', 't', 'u', 'v', 'w', 'y', 'k', 'h'],
+    letras1 = ['a', 'e', 'o', 's'], letras2 = ['c', 'm', 'n', 'x'], letras3 = ['d', 'g', 'i', 'l'], letras4 = ['j', 'q', 'p', 'k', 'h'], letras5 = ['f', 't', 'w', 'y'], letras6 = ['b', 'r', 'v', 'u'],
+    letras = ['a', 'c', 'e', 'm', 'n', 'o', 's', 'x', 'd', 'g', 'i', 'l', 'j', 'q', 'p', 'b', 'f', 'r', 't', 'u', 'v', 'w', 'y', 'k', 'h'],
     letra = letras[Math.floor(Math.random() * letras.length)], score = 0, tempo,
     palavra = score <= 20 ? pMenor[Math.floor(Math.random() * pMenor.length)] : pMair[Math.floor(Math.random() * pMair.length)], resPalavra = "", indexPalavra = 0,
     labelScore = document.getElementById("score"),
@@ -17,8 +17,8 @@ var model1, model2, model3, model4, model5, model6, webcam, labelContainer, RAFl
     facilBool = false, medioBool = false, dificilBool = false, taxa = 1;
 
 async function loadModel() {
-     /* load the model and metadata 
-    / carregar o modelo e os metadados */
+    /* load the model and metadata 
+   / carregar o modelo e os metadados */
 
     /* Refer to tmImage.loadFromFiles() in the API to support files from a file picker
     / Consulte tmImage.loadFromFiles() na API para oferecer suporte a arquivos de um seletor de arquivos */
@@ -34,7 +34,7 @@ async function loadModel() {
     model4 = await tmImage.load(URL4 + "model.json", URL4 + "metadata.json");
     model5 = await tmImage.load(URL5 + "model.json", URL5 + "metadata.json");
     model6 = await tmImage.load(URL6 + "model.json", URL6 + "metadata.json");
-    
+
     RAFVM = window.requestAnimationFrame(verificaModel);
 }
 
@@ -71,10 +71,10 @@ async function loop() {
 / execute a imagem da webcam através do modelo de imagem */
 
 async function predict() {
-    
+
     /* predict can take in an image, video or canvas html element
     / prever pode incluir um elemento HTML de imagem, vídeo ou tela */
-    
+
     let prediction;
     if (score <= 5) {
         if (letras1.includes(letra)) {
@@ -109,10 +109,10 @@ async function predict() {
     labelScore.innerHTML = `Score: <b>${score}</b>`;
     labelTempo.innerHTML = `Time: <b>${tempo.toFixed(0)}</b>`;
     tempo -= 0.02;
-        
+
     if (tempo <= 0) {
         var preview = document.getElementById("preview");
-            
+
         preview.style.display = 'none';
         labelTempo.style.display = 'none';
         labelScore.style.display = 'none';
@@ -120,7 +120,7 @@ async function predict() {
         labelContainer.style.display = 'none';
         document.getElementById("bt_voltar").style.display = 'block';
         document.getElementById("ponto").value = score;
-            
+
         divTela.innerHTML = `<p class="p1">O SEU TEMPO ACABOU.</p><br><br><p class="p2">Score: <b>${score}</b> pontos!</p>`;
 
         try {
@@ -132,7 +132,7 @@ async function predict() {
         rating += calculaTaxa();
         document.getElementById("rating").value = rating;
     }
-    
+
     if (score <= 5) {
         labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>`;
         prediction.map(el => {
@@ -209,23 +209,23 @@ function finalize() {
 function calculaTaxa() {
     if (facilBool) {
         if (score >= scorefacil) {
-            return Math.floor(score*2/10);
+            return Math.floor(score * 2 / 10);
         } else {
-            return -1*Math.floor(score*2/10);
+            return -1 * Math.floor(score * 2 / 10);
         }
     }
     if (medioBool) {
         if (score >= scoremedo) {
-            return Math.floor(score*3/10);
+            return Math.floor(score * 3 / 10);
         } else {
-            return -1*Math.floor(score*3/10);
+            return -1 * Math.floor(score * 3 / 10);
         }
     }
     if (dificilBool) {
         if (score >= scoredificil) {
-            return Math.floor(score*5/10);
+            return Math.floor(score * 5 / 10);
         } else {
-            return -1*Math.floor(score*5/10);
+            return -1 * Math.floor(score * 5 / 10);
         }
     }
 }
