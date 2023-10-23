@@ -167,7 +167,7 @@ body {
 /* ------------INFORMACOES DO USUARIO------------*/
 #infoUser {
     width: 60vh;
-    height: 50vh;
+    height: 60vh;
     background-color: #ff6452;
     border: 5px solid #f8e321;
     border-radius: 10px;
@@ -209,6 +209,7 @@ dl {
 dd {
     padding-left: 20px;
 }
+
 #namelabel {
     font-size: small;
 }
@@ -250,17 +251,19 @@ dd {
 
 #containerRankin {
     width: 80vh;
-    height: 60vh;
+    height: 70vh;
     background-color: #ff6452;
     border: 5px solid #f8e321;
     border-radius: 10px;
     box-shadow: -3px 2px 0px 13px black;
-
+    overflow: hidden;
     margin-top: 8vh;
     margin-left: 68vh;
     z-index: 5;
     position: absolute;
+    overflow-y: auto;
     display: none;
+
 
 }
 
@@ -286,6 +289,128 @@ dd {
 
 
 
+}
+
+
+#ranckDiv img {
+    width: 50vh;
+    margin-left: 18%;
+}
+
+#ranckDiv h1 {
+    display: none;
+}
+
+.table-container {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+/*
+Estilizar a tabela:
+
+Você pode definir estilos gerais para a tabela, como largura, margens, bordas e cores de fundo usando CSS. Por exemplo:
+*/
+
+#rankTabela {
+    width: 100%;
+    border-collapse: collapse;
+    /* Para unir as bordas das células */
+    background-color: #f2f2f2;
+}
+
+
+/*
+Estilizar as células do cabeçalho (th):
+
+Para estilizar as células do cabeçalho, você pode definir estilos para as tags th.
+*/
+
+#rankTabela th {
+    background-color: #f8e321;
+    color: #fff;
+    font-size: 18px;
+}
+
+
+/*Estilizar as células de dados (td):
+
+Para estilizar as células de dados, você pode definir estilos para as tags td.*/
+
+#rankTabela td {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#tdscore {
+    width: 20vh;
+}
+
+#tdnickname {
+    display: flex;
+    align-items: center;
+}
+
+#lugar_1,
+#lugar_2,
+#lugar_3,
+#lugar_0 {
+    max-width: 8vh;
+    height: auto;
+}
+
+/*
+Estilizar as linhas pares e ímpares:
+
+Você pode destacar linhas pares ou ímpares da tabela para facilitar a leitura:
+*/
+
+#rankTabela tr:nth-child(even) {
+    background-color: #ddd;
+}
+
+#rankTabela tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+
+/*
+Hover nas células:
+
+Adicionar um estilo especial quando o mouse passar sobre as células:
+*/
+
+#rankTabela td:hover {
+    background-color: #eeff074d;
+}
+
+/* ------------BARRA DE ROLAGEM containerRankin------------*/
+
+#containerRankin::-webkit-scrollbar {
+    width: 12px;
+    /* Largura da barra de rolagem vertical */
+    height: 12px;
+    /* Altura da barra de rolagem horizontal */
+}
+
+#containerRankin::-webkit-scrollbar-track {
+    background-color: rgb(248, 248, 146);
+    /* Cor da faixa da barra de rolagem */
+}
+
+/* Para navegadores compatíveis com a especificação CSS Scrollbars Level 1 (como Firefox) */
+#containerRankin {
+    scrollbar-width: thin;
+    /* Define a largura da barra de rolagem */
+}
+
+#containerRankin::-webkit-scrollbar-thumb {
+    background: #ff0000;
+    /* Cor da alça da barra de rolagem */
+    border-radius: 6px;
+    /* Raio da alça da barra de rolagem */
 }
 
 
@@ -438,4 +563,326 @@ td {
 #bt_voltar:hover {
     background-color: #6d6600;
     color: #730c00;
+}
+
+
+@media screen and (max-width: 768px) {
+
+
+    /* ------------NAVBAR------------*/
+    /*ok*/
+    #navbar {
+        width: 100%;
+        height: 10vh;
+
+    }
+
+
+    /*ok*/
+    .buttonHome {
+        margin-top: 1.5vh;
+        margin-left: 0vh;
+    }
+
+
+    /*ok*/
+    .buttonHome #btnHome {
+        width: 18vh;
+
+        height: 13.5vh;
+    }
+
+
+
+    .buttonSeta {
+        width: 22, 5vh;
+        height: 18vh;
+        margin-top: 2vh;
+        margin-left: -5vh;
+
+    }
+
+
+    /*ok*/
+    .buttonDropdown {
+        width: 9vh;
+        height: 9vh;
+        margin-right: 1vh;
+
+    }
+
+    /*ok*/
+    #dropdown_content {
+        margin-left: -300%;
+        margin-top: 5vh;
+    }
+
+    /* ------------INFORMACOES DO USUARIO------------*/
+    /*ok*/
+    #infoUser {
+        width: 45vh;
+        height: 55vh;
+        margin-top: 8vh;
+        margin-left: 3vh;
+        padding-left: 10vh;
+        z-index: 10;
+    }
+
+    /* ------------Ranking------------*/
+
+    #containerRankin {
+        width: 45vh;
+        height: 80vh;
+        overflow-x: auto;
+        margin-top: 8vh;
+        margin-left: 3vh;
+        z-index: 10;
+
+    }
+
+
+
+    .buttonXRank {
+        width: 100%;
+        margin-top: 2vh;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 3vh;
+
+    }
+
+    #btnXRank {
+        width: 9vh;
+        height: 9vh;
+        background-color: #730c0000;
+        background-image: url('img/icon_x.png');
+        background-size: cover;
+        border: none;
+        cursor: pointer;
+
+
+
+
+    }
+
+
+    #ranckDiv img {
+        width: 40vh;
+        margin-left: 5%;
+    }
+
+
+    /*
+    Estilizar as células do cabeçalho (th):
+    
+    Para estilizar as células do cabeçalho, você pode definir estilos para as tags th.
+    */
+
+    #rankTabela th {
+        font-size: 25px;
+    }
+
+
+    /*Estilizar as células de dados (td):
+    
+    Para estilizar as células de dados, você pode definir estilos para as tags td.*/
+
+    #tdscore {
+        width: 10vh;
+    }
+
+
+    #lugar_1,
+    #lugar_2,
+    #lugar_3,
+    #lugar_0 {
+        max-width: 5vh;
+    }
+
+
+    /* ------------BACKGROUND GAME------------*/
+    /*ok*/
+    #game {
+        width: 45vh;
+        margin-top: 10vh;
+
+
+    }
+
+    /* ------------CHOOSE GAME------------*/
+
+    #choose_game {
+        padding-left: 2vh;
+    }
+
+    /* ------------GAME PLAY------------*/
+    /*ok*/
+    #bt_voltar {
+        margin-left: 5vh;
+
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+    /* ------------NAVBAR------------*/
+    /*ok*/
+    #navbar {
+        width: 100%;
+        height: 10vh;
+
+    }
+
+
+    /*ok*/
+    .buttonHome {
+        margin-top: 1.5vh;
+        margin-left: 0vh;
+    }
+
+
+    /*ok*/
+    .buttonHome #btnHome {
+        width: 18vh;
+
+        height: 13.5vh;
+    }
+
+
+
+    .buttonSeta {
+        width: 22, 5vh;
+        height: 18vh;
+        margin-top: 2vh;
+        margin-left: -5vh;
+
+    }
+
+
+    /*ok*/
+    .buttonDropdown {
+        width: 9vh;
+        height: 9vh;
+        margin-right: 1vh;
+
+    }
+
+    /*ok*/
+    #dropdown_content {
+        margin-left: -300%;
+        margin-top: 5vh;
+    }
+
+    /* ------------INFORMACOES DO USUARIO------------*/
+    /*ok*/
+    #infoUser {
+        width: 45vh;
+        height: 55vh;
+        margin-top: 8vh;
+        margin-left: 3vh;
+        padding-left: 10vh;
+        z-index: 10;
+    }
+
+    /* ------------Ranking------------*/
+
+    #containerRankin {
+        width: 45vh;
+        height: 80vh;
+        overflow-x: auto;
+        margin-top: 8vh;
+        margin-left: 3vh;
+        z-index: 10;
+
+    }
+
+
+
+    .buttonXRank {
+        width: 100%;
+        margin-top: 2vh;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 3vh;
+
+    }
+
+    #btnXRank {
+        width: 9vh;
+        height: 9vh;
+        background-color: #730c0000;
+        background-image: url('img/icon_x.png');
+        background-size: cover;
+        border: none;
+        cursor: pointer;
+
+
+
+
+    }
+
+
+    #ranckDiv img {
+        width: 40vh;
+        margin-left: 5%;
+    }
+
+
+    /*
+    Estilizar as células do cabeçalho (th):
+    
+    Para estilizar as células do cabeçalho, você pode definir estilos para as tags th.
+    */
+
+    #rankTabela th {
+        font-size: 25px;
+    }
+
+
+    /*Estilizar as células de dados (td):
+    
+    Para estilizar as células de dados, você pode definir estilos para as tags td.*/
+
+    #tdscore {
+        width: 10vh;
+    }
+
+
+    #lugar_1,
+    #lugar_2,
+    #lugar_3,
+    #lugar_0 {
+        max-width: 5vh;
+    }
+
+
+    /* ------------BACKGROUND GAME------------*/
+    /*ok*/
+    #game {
+        width: 45vh;
+        margin-top: 10vh;
+
+
+    }
+
+    /* ------------CHOOSE GAME------------*/
+
+    #choose_game {
+        padding-left: 2vh;
+    }
+
+    /* ------------GAME PLAY------------*/
+    /*ok*/
+
+    #tela label {
+        font-size: 2rem;
+    }
+
+    #bt_voltar {
+        margin-left: 5vh;
+
+    }
+
 }
