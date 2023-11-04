@@ -8,7 +8,7 @@
 body {
     height: 100vh;
     /*background-color: black;*/
-    background-image: url(img/futurista_retro_background.png);
+    background-image: url('../img/futurista_retro_background.png');
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -56,7 +56,7 @@ body {
     width: 30vh;
     height: 13vh;
     background-color: transparent;
-    background-image: url('img/login.png');
+    background-image: url('../img/login.png');
     background-size: cover;
     border: none;
     cursor: pointer;

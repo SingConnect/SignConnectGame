@@ -1,11 +1,6 @@
 <?php
 
-include_once("conexao.php");
-
-// Verifica se a conexão foi estabelecida com sucesso
-if ($conexao->connect_error) {
-    die("Falha na conexão com o banco de dados: " . $conexao->connect_error);
-}
+include_once("../../module/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtém os dados do formulário
@@ -27,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         while ($row = $result->fetch_assoc()) {
             $id = $row["id"];
         }
-        header("Location: chooseGame.php?usuario_id=".$id);
+        header("Location: ../../vewer/chooseGame.php?usuario_id=".$id);
         exit; // Certifique-se de sair do script após o redirecionamento.
     } else {
         // Login falhou

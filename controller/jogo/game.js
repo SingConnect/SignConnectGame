@@ -46,7 +46,7 @@ function verificaModel() {
     }
 }
 async function init() {
-    ct = false;
+    ct = true;
     /* Convenience function to setup a webcam
     / Função de conveniência para configurar uma webcam */
 
@@ -111,7 +111,7 @@ async function predict() {
     labelTempo.innerHTML = `Time: <b>${tempo.toFixed(0)}</b>`;
     tempo -= 0.02;
 
-    if (tempo <= 0) {
+    if (tempo <= 0 && ct) {
         var preview = document.getElementById("preview");
 
         preview.style.display = 'none';
@@ -124,16 +124,17 @@ async function predict() {
         document.getElementById("btnHome").style.display = 'none';
         document.getElementById("btnSeta").style.display = 'none';
 
-        divTela.innerHTML = `<p class="p1">O SEU TEMPO ACABOU.</p><br><br><p class="p2">Score: <b>${score}</b> pontos!</p>`;
+        rating += calculaTaxa();
+        document.getElementById("rating").value = rating;
+
+        divTela.innerHTML = `<p class="p1">O SEU TEMPO ACABOU.</p><br><br><p class="p2">Score: <b>${score}</b> pontos!</p><br><br><p>Rating: <b>${rating} ${calculaTaxa() >= 0 ? '+'+calculaTaxa() : '-'+calculaTaxa()}</b></p>`;
 
         try {
             finalize();
         } catch (error) {
             console.log(error);
         }
-
-        rating += calculaTaxa();
-        document.getElementById("rating").value = rating;
+        ct = false;
     }
 
     if (score <= 5) {
@@ -210,29 +211,26 @@ function finalize() {
 }
 
 function calculaTaxa() {
-    if (ct === false) {
-        if (facilBool) {
-            if (score >= scorefacil) {
-                return Math.floor(score * 2 / 10);
-            } else {
-                return -1 * Math.floor(score * 2 / 10);
-            }
+    if (facilBool) {
+        if (score >= scorefacil) {
+            return Math.floor(score * 2 / 10);
+        } else {
+            return -1 * Math.floor(score * 2 / 10);
         }
-        if (medioBool) {
-            if (score >= scoremedio) {
-                return Math.floor(score * 3 / 10);
-            } else {
-                return -1 * Math.floor(score * 3 / 10);
-            }
+    }
+    if (medioBool) {
+        if (score >= scoremedio) {
+            return Math.floor(score * 3 / 10);
+        } else {
+            return -1 * Math.floor(score * 3 / 10);
         }
-        if (dificilBool) {
-            if (score >= scoredificil) {
-                return Math.floor(score * 5 / 10);
-            } else {
-                return -1 * Math.floor(score * 5 / 10);
-            }
+    }
+    if (dificilBool) {
+        if (score >= scoredificil) {
+            return Math.floor(score * 5 / 10);
+        } else {
+            return -1 * Math.floor(score * 5 / 10);
         }
-        ct = true;
     }
 }
 

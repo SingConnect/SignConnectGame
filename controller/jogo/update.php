@@ -1,10 +1,5 @@
 <?php
-include_once("conexao.php");
-
-// Verifica se a conexão foi estabelecida com sucesso
-if ($conexao->connect_error) {
-    die("Falha na conexão com o banco de dados: ".$conexao->connect_error);
-}
+include_once("../../module/conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dificuldade = $_POST["dificuldade"];
@@ -19,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conexao->query($sql) === TRUE) {
         // Redireciona para a página "chooseGame.php" após o registro bem-sucedido
-        header("Location: chooseGame.php?usuario_id=$id");
+        header("Location: ../../vewer/chooseGame.php?usuario_id=$id");
         exit();
     } else {
         echo "Erro ao inserir no banco de dados. Tente novamente.";

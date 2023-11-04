@@ -83,5 +83,5 @@ btnHome.addEventListener('click', function () {
     } catch (error) {
         console.log(error);
     }
-    window.location.replace("index.html");
+    window.location.replace("../init.html");
 });

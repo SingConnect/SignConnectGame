@@ -10,11 +10,7 @@
 <body onload="loadModel()">
 
     <?php
-    include_once("conexao.php");
-
-    if ($conexao->connect_error) {
-        die("Falha na conexão com o banco de dados: " . $conexao->connect_error);
-    }
+    include_once("../module/conexao.php");
 
     $id = 0;
     $name = "";
@@ -212,7 +208,7 @@
                 <div id="dropdown_content">
                     <button id="userbtnD"></button>
                     <button id="rankingbtnD"></button>
-                    <a href="logout.php"><button id="logoutbtnD"></button></a>
+                    <a href="../controller/login_cadastro/logout.php"><button id="logoutbtnD"></button></a>
                 </div>
 
             </div>
@@ -249,7 +245,7 @@
 
                 </div>
 
-                <form id="tela" action="update.php" method="post">
+                <form id="tela" action="../controller/jogo/update.php" method="post">
 
                     <table>
                         <tr>
@@ -289,12 +285,12 @@
 
 
 
-    <link rel="stylesheet" type="text/css" href="styleChooseGame.css">
+    <link rel="stylesheet" type="text/css" href="css/styleChooseGame.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script src="palavras.js"></script>
-    <script src="game.js"></script>
-    <script src="style_action.js"></script>
+    <script src="../controller/jogo/palavras.js"></script>
+    <script src="../controller/jogo/game.js"></script>
+    <script src="js/style_action.js"></script>
 </body>
 
 </html>

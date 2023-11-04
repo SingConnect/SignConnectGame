@@ -5,5 +5,5 @@ session_start();
 session_destroy();
 
 // Redirecionar o usuário para a página de login (ou outra página)
-header('Location: index.html'); // Substitua pelo caminho correto da página de login
+header('Location: ../../vewer/init.html'); // Substitua pelo caminho correto da página de login
 exit;

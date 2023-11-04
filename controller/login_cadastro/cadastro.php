@@ -1,10 +1,6 @@
 <?php
 
-include_once("conexao.php");
-
-if ($conexao->connect_error) {
-    die("Erro na conexão com o banco de dados: " . $conexao->connect_error);
-}
+include_once("../../module/conexao.php");
 
 // Processamento do formulário de registro
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql3 = "INSERT INTO scores (usuario_id, scoreFacil, scoreMedio, scoreDificil, rating) VALUES ($id, 0, 0, 0, 0)";
                 if ($conexao->query($sql3) === TRUE) {
                     // Redireciona para a página "chooseGame.html" após o registro bem-sucedido
-                    header("Location: chooseGame.php?usuario_id=".$id);
+                    header("Location: ../../vewer/chooseGame.php?usuario_id=".$id);
                     exit();
                 }else {
                     echo "Erro ao inserir no banco de dados. Tente novamente.";
