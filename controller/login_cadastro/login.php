@@ -2,26 +2,20 @@
 
 include_once("../../module/conexao.php");
 
+$c = new Conexao();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtém os dados do formulário
     $usernameOrEmail = $_POST["nicknameOrEmail"];
     $password = $_POST["password"];
 
     // Consulta o banco de dados para verificar o login
-    $sql = "SELECT * FROM usuarios WHERE (nickname = ? OR email = ?) AND password = ?";
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("sss", $usernameOrEmail, $usernameOrEmail, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $c->getAllDataByNicknameOrEmailAndPassword($usernameOrEmail, $password);
 
     if ($result->num_rows == 1) {
         // O login foi bem-sucedido
         // Redirecionar o usuário para chooseGame.html
-        $sql2 = "SELECT id FROM usuarios WHERE (nickname = '$usernameOrEmail' OR email = '$usernameOrEmail')";
-        $result = $conexao->query($sql2);
-        while ($row = $result->fetch_assoc()) {
-            $id = $row["id"];
-        }
+        $id = $c->getIdByNicknameOrEmailAndPassword($usernameOrEmail, $password);
         header("Location: ../../vewer/chooseGame.php?usuario_id=".$id);
         exit; // Certifique-se de sair do script após o redirecionamento.
     } else {

@@ -83,5 +83,5 @@ btnHome.addEventListener('click', function () {
     } catch (error) {
         console.log(error);
     }
-    window.location.replace("../init.html");
+    window.location.replace(window.location.href.split("chooseGame")[0] + "init.html");
 });

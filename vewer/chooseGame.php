@@ -12,62 +12,29 @@
     <?php
     include_once("../module/conexao.php");
 
-    $id = 0;
-    $name = "";
-    $lastname = "";
-    $nickname = "";
-    $scorefacil = 0;
-    $scoremedio = 0;
-    $scoredificil = 0;
-    $rating = 0;
+    $c = new Conexao();
 
     // pega dados da tabela usuarios
     if (isset($_GET["usuario_id"])) {
         $id = $_GET["usuario_id"];
-        $sql = "SELECT name, lastname, nickname FROM usuarios WHERE id=$id";
-        $result = $conexao->query($sql);
-    }
-    while ($row = $result->fetch_assoc()) {
-        $name = $row["name"];
-        $lastname = $row["lastname"];
-        $nickname = $row["nickname"];
+        $res = $c->getDataInTableUsersById($id);
+        $name = $res[0];
+        $lastname = $res[1];
+        $nickname = $res[2];
     }
 
     // pega dados da tabela sores
     if (isset($_GET["usuario_id"])) {
         $id = $_GET["usuario_id"];
-        $sql2 = "SELECT * FROM scores WHERE usuario_id=$id";
-        $result = $conexao->query($sql2);
-    }
-    while ($row = $result->fetch_assoc()) {
-        $scorefacil = $row["scoreFacil"];
-        $scoremedio = $row["scoreMedio"];
-        $scoredificil = $row["scoreDificil"];
-        $rating = $row["rating"];
+        $res = $c->getDataInTableScoresById($id);
+        $scorefacil = $res[0];
+        $scoremedio = $res[1];
+        $scoredificil = $res[2];
+        $rating = $res[3];
     }
 
     // pegar dados de todos os usuarios e adicionar en um array
-    $sql = "SELECT * FROM usuarios";
-    $result = $conexao->query($sql);
-
-    $rank = [];
-
-    while ($row = $result->fetch_assoc()) {
-        $rank[$row['id']] = ['nickname' => $row['nickname']];
-    }
-
-    foreach (array_keys($rank) as $i) {
-        $sql = "SELECT * FROM scores WHERE usuario_id=$i";
-        $result = $conexao->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            $rank[$i]['scoreFacil'] = $row['scoreFacil'];
-            $rank[$i]['scoreMedio'] = $row['scoreMedio'];
-            $rank[$i]['scoreDificil'] = $row['scoreDificil'];
-            $rank[$i]['rating'] = $row['rating'];
-        }
-    }
-
-    $conexao->close();
+    $rank = $c->getAllUsesAsList();
 
     // criando uma lista ordenada dos ratings
     $ratingSort = [];
