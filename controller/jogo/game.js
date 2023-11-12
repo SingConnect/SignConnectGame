@@ -36,6 +36,8 @@ async function loadModel() {
     model6 = await tmImage.load(URL6 + "model.json", URL6 + "metadata.json");
 
     RAFVM = window.requestAnimationFrame(verificaModel);
+
+    document.getElementById("bt_voltar").style.display = 'none';
 }
 
 function verificaModel() {
@@ -123,6 +125,7 @@ async function predict() {
         document.getElementById("ponto").value = score;
         document.getElementById("btnHome").style.display = 'none';
         document.getElementById("btnSeta").style.display = 'none';
+        document.getElementById("btnPular").style.display = 'none';
 
         rating += calculaTaxa();
         document.getElementById("rating").value = rating;
@@ -137,7 +140,7 @@ async function predict() {
         ct = false;
     }
 
-    if (score <= 5) {
+    if (score <= 9) {
         labelLetra.innerHTML = `Faça a letra: <b>${letra}</b>`;
         prediction.map(el => {
             if (el.probability >= 0.9) {
@@ -234,12 +237,20 @@ function calculaTaxa() {
     }
 }
 
+function btnPular() {
+        letra = letras[Math.floor(Math.random() * letras.length)];
+        palavra = score <= 20 ? pMenor[Math.floor(Math.random() * pMenor.length)] : pMair[Math.floor(Math.random() * pMair.length)];
+        score -= 3;
+}
+
 function btnFacil() {
+    score = 0;
     facilBool = true;
     document.getElementById("dificuldade").value = "f";
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
     var btnSeta = document.getElementById('btnSeta');
+    document.getElementById("btnPular").style.display = 'block';
     tempo = 30;
     choose_game.style.display = "none";
     game_play.style.display = "block";
@@ -248,11 +259,13 @@ function btnFacil() {
     init();
 }
 function btnMedio() {
+    score = 0;
     medioBool = true;
     document.getElementById("dificuldade").value = "m";
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
     var btnSeta = document.getElementById('btnSeta');
+    document.getElementById("btnPular").style.display = 'block';
     tempo = 20;
     choose_game.style.display = "none";
     game_play.style.display = "block";
@@ -261,11 +274,13 @@ function btnMedio() {
     init();
 }
 function bntDificil() {
+    score = 0;
     dificilBool = true;
     document.getElementById("dificuldade").value = "d";
     var choose_game = document.getElementById("choose_game");
     var game_play = document.getElementById('game_play');
     var btnSeta = document.getElementById('btnSeta');
+    document.getElementById("btnPular").style.display = 'block';
     tempo = 10;
     choose_game.style.display = "none";
     game_play.style.display = "block";

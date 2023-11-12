@@ -233,6 +233,7 @@
                     <input type="text" name="dificuldade" id="dificuldade">
                     <input type="submit" id="bt_voltar" value="Voltar">
                 </form>
+                <button id="btnPular" onclick="btnPular()">Pular<br>Score: -3</button>
 
             </div>
 

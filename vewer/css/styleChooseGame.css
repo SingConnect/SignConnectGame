@@ -519,7 +519,7 @@ Adicionar um estilo especial quando o mouse passar sobre as células:
     text-align: center;
 }
 
-td {
+form table tr td {
     padding-left: 20px;
     padding-top: 20px;
 }
@@ -550,19 +550,52 @@ td {
 
 #bt_voltar {
     font-size: 50px;
-    background-color: #ffee00;
-    color: #ff6452;
-    border: 5px black solid;
-    border-radius: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 47px;
-    margin-top: 60px;
+    margin-left: 11vh;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #000000;
+    background-color: #f2ff00;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #b5cd00;
 }
 
-#bt_voltar:hover {
-    background-color: #6d6600;
-    color: #730c00;
+#bt_voltar:hover {background-color: rgb(141, 143, 0)}
+
+#bt_voltar:active {
+    background-color: rgb(136, 143, 0);
+    box-shadow: 0 5px rgb(101, 99, 0);
+    transform: translateY(4px);
+}
+
+#btnPular {
+    display: none;
+    margin-left: 15vh;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #cd0000;
+}
+
+#btnPular:hover {background-color: rgb(143, 0, 0)}
+
+#btnPular:active {
+    background-color: rgb(143, 0, 0);
+    box-shadow: 0 5px rgb(101, 0, 0);
+    transform: translateY(4px);
 }
 
 
